@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\yflow.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\yflow.dir/objects.a @CMakeFiles\yflow.dir\objects1.rsp
+C:\MinGW\bin\g++.exe  -g -Wl,--whole-archive CMakeFiles\yflow.dir/objects.a -Wl,--no-whole-archive -o yflow.exe -Wl,--out-implib,libyflow.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\yflow.dir\linklibs.rsp

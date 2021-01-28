@@ -1,0 +1,64 @@
+\hypertarget{tools_8h}{}\doxysection{src/tools.h File Reference}
+\label{tools_8h}\index{src/tools.h@{src/tools.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{tools_8h_a55a133284c9a7f0b98e5fc2af98a67e4}{Inv\+Sqrt}} (float x)
+\begin{DoxyCompactList}\small\item\em 基于牛顿迭代的快速平方根倒数算法(x\+\_\+\{n+1\} = x\+\_\+\{n\}-\/frac\{f(x\+\_\+n)\}\{f$^\wedge$\{\textquotesingle{}\}(x\+\_\+n)\}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+殉道者 (\href{mailto:wcjbyjx@gmail.com}{\texttt{ wcjbyjx@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/01-\/25 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright © 2014-\/2021 weichijunbo.
+\end{DoxyCopyright}
+\DoxyHorRuler{0}
+ \begin{DoxyParagraph}{Change\+Log\+:}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Date }&\cellcolor{\tableheadbgcolor}\textbf{ Version }&\cellcolor{\tableheadbgcolor}\textbf{ Author }&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Date }&\cellcolor{\tableheadbgcolor}\textbf{ Version }&\cellcolor{\tableheadbgcolor}\textbf{ Author }&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-4}
+\endhead
+2021-\/01-\/25 &1.\+0 &殉道者 &内容 \\\cline{1-4}
+\end{longtabu}
+\DoxyHorRuler{0}
+ 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tools_8h_a55a133284c9a7f0b98e5fc2af98a67e4}\label{tools_8h_a55a133284c9a7f0b98e5fc2af98a67e4}} 
+\index{tools.h@{tools.h}!InvSqrt@{InvSqrt}}
+\index{InvSqrt@{InvSqrt}!tools.h@{tools.h}}
+\doxysubsubsection{\texorpdfstring{InvSqrt()}{InvSqrt()}}
+{\footnotesize\ttfamily float Inv\+Sqrt (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})}
+
+
+
+基于牛顿迭代的快速平方根倒数算法(x\+\_\+\{n+1\} = x\+\_\+\{n\}-\/frac\{f(x\+\_\+n)\}\{f$^\wedge$\{\textquotesingle{}\}(x\+\_\+n)\}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & 需要进行平方倒数运算的数\\
+\hline
+\end{DoxyParams}
+x = x(1.\+5-\/alpha$\ast$x$\ast$) \begin{DoxyReturn}{Returns}
+计算结果 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file tools.\+h.
+

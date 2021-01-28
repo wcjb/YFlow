@@ -1,0 +1,86 @@
+<mxfile host="65bd71144e" modified="2021-01-25T14:39:20.331Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="U_Wet5tI9C_TJ7iPAnD-" version="13.10.0" type="embed">
+    <diagram id="nwE3KE0dT87xNDP3Qgh5" name="第 1 页">
+        <mxGraphModel dx="963" dy="681" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#DAD2D8" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="9" value="张量结构&lt;br&gt;" style="swimlane;html=1;startSize=20;horizontal=0;childLayout=treeLayout;horizontalTree=1;resizable=0;containerType=tree;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" parent="1" vertex="1">
+                    <mxGeometry x="99" y="210" width="630" height="475" as="geometry">
+                        <mxRectangle x="260" y="270" width="30" height="70" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="Tensor" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" parent="9" vertex="1">
+                    <mxGeometry x="40" y="177.5" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Shape：张量维度" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" parent="9" vertex="1">
+                    <mxGeometry x="190" y="20" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;html=1;labelBackgroundColor=#DAD2D8;strokeColor=#A8201A;fontColor=#143642;sketch=1;" parent="9" source="10" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;html=1;labelBackgroundColor=#DAD2D8;strokeColor=#A8201A;fontColor=#143642;sketch=1;" parent="9" source="10" target="27" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Dtype：张量数据类型" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" parent="9" vertex="1">
+                    <mxGeometry x="190" y="100" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;html=1;labelBackgroundColor=#DAD2D8;strokeColor=#A8201A;fontColor=#143642;sketch=1;" parent="9" source="10" target="29" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="400" y="266.5" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="Matrix：张量最基本的构成单位二维矩阵" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" parent="9" vertex="1">
+                    <mxGeometry x="190" y="180" width="100" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;html=1;labelBackgroundColor=#DAD2D8;strokeColor=#A8201A;fontColor=#143642;sketch=1;" parent="9" source="10" target="31" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="400" y="346.5" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="Dimension：张量维数" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" parent="9" vertex="1">
+                    <mxGeometry x="190" y="335" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;html=1;labelBackgroundColor=#DAD2D8;strokeColor=#A8201A;fontColor=#143642;sketch=1;" edge="1" target="45" source="31" parent="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="400" y="467.5" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="0维张量为标量即常量" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" vertex="1" parent="9">
+                    <mxGeometry x="340" y="255" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;html=1;labelBackgroundColor=#DAD2D8;strokeColor=#A8201A;fontColor=#143642;sketch=1;" edge="1" target="47" source="31" parent="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="550" y="593" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="1维张量为矢量" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" vertex="1" parent="9">
+                    <mxGeometry x="340" y="335" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;html=1;labelBackgroundColor=#DAD2D8;strokeColor=#A8201A;fontColor=#143642;sketch=1;" edge="1" target="49" source="31" parent="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="550" y="609" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" value="2维及以上维度的张量可理解为多维矩阵&lt;br&gt;" style="whiteSpace=wrap;html=1;fillColor=#FAE5C7;strokeColor=#0F8B8D;fontColor=#143642;rounded=1;sketch=1;" vertex="1" parent="9">
+                    <mxGeometry x="340" y="415" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="矩阵元素的数据类型，char int float double等类型" style="whiteSpace=wrap;html=1;shape=partialRectangle;top=0;left=0;bottom=1;right=0;points=[[0,1],[1,1]];fillColor=none;align=center;verticalAlign=bottom;routingCenterY=0.5;snapToPoint=1;recursiveResize=0;autosize=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};rounded=1;sketch=1;strokeColor=#0F8B8D;fontColor=#143642;" parent="9" vertex="1">
+                    <mxGeometry x="340" y="110" width="270" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;strokeColor=#A8201A;fillColor=#FAE5C7;fontColor=#143642;exitX=1;exitY=0;exitDx=0;exitDy=0;" parent="9" source="27" target="42" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="50" y="100" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="用数组指针来表示，数组的大小为张量的维数" style="whiteSpace=wrap;html=1;shape=partialRectangle;top=0;left=0;bottom=1;right=0;points=[[0,1],[1,1]];fillColor=none;align=center;verticalAlign=bottom;routingCenterY=0.5;snapToPoint=1;recursiveResize=0;autosize=1;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};rounded=1;sketch=1;strokeColor=#0F8B8D;fontColor=#143642;" parent="9" vertex="1">
+                    <mxGeometry x="340" y="30" width="250" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;strokeColor=#A8201A;fillColor=#FAE5C7;fontColor=#143642;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="9" target="40" edge="1" source="11">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="320" y="40" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
