@@ -16,7 +16,34 @@ unsigned long seed_time(int _seed)
          *  );
          * @endcode
          */
-        localtime_s(&local,&_time);
+        /// Defined in header <time.h>
+        /// struct tm *localtime  ( const time_t *timer );
+        /// (1)	
+        /// struct tm *localtime_r( const time_t *timer, struct tm *buf );
+        /// (2)	(since C23)
+        /// struct tm *localtime_s( const time_t *restrict timer, struct tm *restrict buf );
+        /// (3)	(since C11)
+        /// 1) Converts given time since epoch (a time_t value pointed to by timer) into calendar time, expressed in local time, in the struct tm format. The result is stored in static storage and a pointer to that static storage is returned.
+        /// 2) Same as (1), except that the function uses user-provided storage buf for the result.
+        /// 3) Same as (1), except that the function uses user-provided storage buf for the result and that the following errors are detected at runtime and call the currently installed constraint handler function:
+        /// timer or buf is a null pointer
+        /// As with all bounds-checked functions, localtime_s is only guaranteed to be available if __STDC_LIB_EXT1__ is defined by the implementation and if the user defines __STDC_WANT_LIB_EXT1__ to the integer constant 1 before including time.h.
+        /// 通过预编译宏来判断当前系统：https://www.jianshu.com/p/c92e8b81ad04
+        #ifdef _WIN64
+            localtime_s(&local,&_time);
+        #elif __APPLE__
+            #include "TargetConditionals.h"
+            #if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
+                // define something for simulator   
+            #elif TARGET_OS_IPHONE
+                // define something for iphone  
+            #else
+                #define TARGET_OS_OSX 1
+                // define something for OSX
+                localtime_r(&_time, &local);
+            #endif
+        #endif
+        
         local.tm_mon++;
         unsigned long ssecond = (long)local.tm_sec*100+local.tm_sec+36923;
         unsigned long nowtime = local.tm_sec + local.tm_min*100 + local.tm_hour*10000 + local.tm_mday*1000000+local.tm_mon*100000000; 

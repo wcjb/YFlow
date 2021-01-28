@@ -6,17 +6,31 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/wcjb/Documents/CodeSpace/YFlow/src/Random.cpp
+/Users/weichijunbo/Documents/YFlow/src/Random.cpp
 Random.h
-C:/Users/wcjb/Documents/CodeSpace/YFlow/src/Random.h
+/Users/weichijunbo/Documents/YFlow/src/Random.h
+TargetConditionals.h
+/Users/weichijunbo/Documents/YFlow/src/TargetConditionals.h
 
-C:/Users/wcjb/Documents/CodeSpace/YFlow/src/Random.h
+/Users/weichijunbo/Documents/YFlow/src/Random.h
 time.h
 -
 tools.h
-C:/Users/wcjb/Documents/CodeSpace/YFlow/src/tools.h
+/Users/weichijunbo/Documents/YFlow/src/tools.h
 iostream
 -
 
-C:/Users/wcjb/Documents/CodeSpace/YFlow/src/tools.h
+/Users/weichijunbo/Documents/YFlow/src/main.cpp
+iostream
+-
+Random.h
+/Users/weichijunbo/Documents/YFlow/src/Random.h
+
+/Users/weichijunbo/Documents/YFlow/src/tools.cpp
+tools.h
+/Users/weichijunbo/Documents/YFlow/src/tools.h
+TargetConditionals.h
+/Users/weichijunbo/Documents/YFlow/src/TargetConditionals.h
+
+/Users/weichijunbo/Documents/YFlow/src/tools.h
 

@@ -19,6 +19,8 @@
 
 #pragma once
 
+int sys(void);
+
 /**
  * @brief 基于牛顿迭代的快速平方根倒数算法(x(n+1) = x(n)-f(x(n))/f'(x(n)))
  * @param x 需要进行平方倒数运算的数

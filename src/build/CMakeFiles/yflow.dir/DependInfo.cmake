@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/wcjb/Documents/CodeSpace/YFlow/src/Random.cpp" "C:/Users/wcjb/Documents/CodeSpace/YFlow/src/build/CMakeFiles/yflow.dir/Random.cpp.obj"
-  "C:/Users/wcjb/Documents/CodeSpace/YFlow/src/main.cpp" "C:/Users/wcjb/Documents/CodeSpace/YFlow/src/build/CMakeFiles/yflow.dir/main.cpp.obj"
-  "C:/Users/wcjb/Documents/CodeSpace/YFlow/src/tools.cpp" "C:/Users/wcjb/Documents/CodeSpace/YFlow/src/build/CMakeFiles/yflow.dir/tools.cpp.obj"
+  "/Users/weichijunbo/Documents/YFlow/src/Random.cpp" "/Users/weichijunbo/Documents/YFlow/src/build/CMakeFiles/yflow.dir/Random.cpp.o"
+  "/Users/weichijunbo/Documents/YFlow/src/main.cpp" "/Users/weichijunbo/Documents/YFlow/src/build/CMakeFiles/yflow.dir/main.cpp.o"
+  "/Users/weichijunbo/Documents/YFlow/src/tools.cpp" "/Users/weichijunbo/Documents/YFlow/src/build/CMakeFiles/yflow.dir/tools.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
