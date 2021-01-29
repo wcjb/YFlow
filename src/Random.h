@@ -34,18 +34,7 @@ const double two32 = 4294967296.0;
  * @brief 根据系统时间获取随机数种子，作为随机数生成算法中的初值
  * @param  _seed            初始化随机数种子，0表示使用时间种子，其余整数则直接使用314159+_seed作为随机数种子
  */
-unsigned long seed_time(int _seed);
-
-/**
- * @brief 计算整数的位数
- * @details     要计算整数的位数，直观来看，可以不断除10来累加计数，
- * 弊端在于需要不断进行除法，因此采用临界值比较来累加计数，提升效率
- * @param  number           desc
- * @return int @c 
- */
-int len_number(unsigned long number);
-
-int split_number(unsigned long number,int m,int n);
+unsigned long _seed_(int _seed);
 
 /**
  * @brief 冯·诺依曼平方取中法用于生成符合均匀分布的随机序列
@@ -69,7 +58,8 @@ int split_number(unsigned long number,int m,int n);
  *  unsigned long long int   8 字节	     18446744073709551615 (0~2^64 - 1)
  * @return float* @c 
  */
-float middle_square(void);
+
+unsigned long int _MiddleSquare_(int seed);
 
 /**
  * @brief 
@@ -95,9 +85,12 @@ float middle_square(void);
 //         data[i+1] = radius * std::sin(theta);
 //     }
 // }
-
-
-inline static uint32_t msws() 
+/**
+ * @brief 基于Wely等分布定理的平方取中法实现
+ * @return T @c 
+ */
+template<class T>
+inline static T _WelySquare_() 
 {
     uint64_t x = 0, w = 0, s = 0xb5ad4eceda1ce2a9;
     x *= x; 
@@ -147,7 +140,7 @@ inline static uint32_t msws()
  */
 
 template<class T>
-inline static T _wely_squares_(uint64_t ctr) 
+inline static T _FourRoundWelySquares_(uint64_t ctr) 
 {
     uint64_t key[] = {
         #include "keys.h"
