@@ -55,14 +55,19 @@ int main(int argc, char** argv)
 
 	// int a[4] = {1,2,3,4};
 	// cout << sum(a) << endl;
-	int a = 12345;
-    unsigned long b = 11;
+
     ///C++中int类型和long类型范围相同-2147483648～2147483647(-2^31~2^31-1)
     // if (typeid(a)==typeid(int))
     // {
     //         cout << "int" << endl;
     // }
+	uint64_t a = 19;
+	for (int i = 0 ;i < a;i++)
+	{
+		float b = _wely_squares_<float>(i);
+		cout << b << endl;
+	}
 	
-	middle_square();
+	
 	return 0;
 }

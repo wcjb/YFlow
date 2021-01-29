@@ -1,5 +1,13 @@
++ Wely等分布定理
+
+   &emsp;&emsp;当$x$为无理数时，序列$f_a(n)=\{a,2a,3a,...\}$ Mod 1后在$[0,1]$上均匀分布,可以证明序列${a,2^2a,3^2a,...}$与序列${p(n)a}$($p(n)$表示第$n$个素数)也具有这个性质。利用这个性质改良平方取中法来生成符合均匀分布的随机数详情可参考wiki词条[Middle-square method](https://www.wikiwand.com/en/Middle-square_method)。
+   > [Weyl 的等分布定理与数项级数的收敛性](https://tigertooth4.github.io/post/2019-06/abel-dirichlet-test-fail-reveals-weyl-theorem-on-equidistribution-theorem/)
+
+   > [Weyl sequence](https://www.wikiwand.com/en/Weyl_sequence)
+
+
 + 魔数
-  
+
     &emsp;&emsp;很多类型的文件，其起始的几个字节的内容是固定的（或是有意填充，或是本就如此）。根据这几个字节的内容就可以确定文件类型，因此这几个字节的内容被称为魔数 (magic number)。
 
 + 大端存储与小端存储

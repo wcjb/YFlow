@@ -47,13 +47,16 @@ unsigned long seed_time(int _seed)
         local.tm_mon++;
         unsigned long ssecond = (long)local.tm_sec*100+local.tm_sec+36923;
         unsigned long nowtime = local.tm_sec + local.tm_min*100 + local.tm_hour*10000 + local.tm_mday*1000000+local.tm_mon*100000000; 
-        return nowtime;
+        /// 由系统时间生成的随机数种子为9位整数
+        /// 平方后已超过了long类型数字上限，故取其后四位作为随机数种子
+        return ((double)nowtime / 10000 - nowtime / 10000) * 10000;
     }
     else
     {
-        return (unsigned long) 314159 +_seed;
+        return (unsigned long) 1314 +_seed;
     }   
 }
+
 int len_number(unsigned long number)
 {   
     /// 只计算整数的数字位数
@@ -70,15 +73,14 @@ int len_number(unsigned long number)
 int split_number(unsigned long number,int m,int n)
 {
     int len = len_number(number);
-    if(len < n)
-    {
-        printf("ERROR:split or number is error!\n");
-    }
+    // if(len < n)
+    // {
+    //     printf("ERROR:split of number is error!\n");
+    // }
     number = number / binpow(10,m-1);
     int pow = binpow(10,n+1-m);
     return ((double)number / pow-number / pow)*pow;
 }
-
 
 float middle_square(void)
 {
@@ -88,16 +90,15 @@ float middle_square(void)
     unsigned long random = seed_time(0);
     int start_len = len_number(random);
     unsigned long square = random * random;
-    int end_len = len_number(square);
        
     unsigned int random_number[MAX_NUMBER];
     for (int i = 0;i < MAX_NUMBER;i++)
     {  
+        std::cout << start_len/2+1 << std::endl << start_len/2+start_len << std::endl; 
         random_number[i] = split_number(square,start_len/2+1,start_len/2+start_len);
         std::cout << square <<std::endl << random_number[i] << std::endl;
-        square *=  square;
+        square = random_number[i]*random_number[i] ;
+        start_len = len_number(square);
     }
-    
     return 0.0f;
-
 }
