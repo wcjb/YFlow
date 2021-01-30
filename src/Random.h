@@ -5,11 +5,11 @@
  * @version 0.0.1
  * @date 2021-01-26
  * @copyright Copyright © 2014-2021 weichijunbo.
- * @details     随机数生成器的实现，实现了绝大部分的随机数生成算法包括冯·诺伊曼平方取中法、
+ * @details     随机数生成器的实现，实现了绝大部分的随机数生成算法包括冯·诺伊曼平方取中法及其改良算法、
  * 线性同余发生器、FSR发生器、组合发生器、梅森旋转演算法。由于需要生成符合常见分布的随机数，
  * 故采用随机数生成算法生成符合均匀分布(即一个周期内所有数据出现是等概率)的随机数，再利用均匀分布的随机数生成符合其它分布的随
  * 机数。
- * 
+ * @see [随机数的前世今生](https://www.nkdacs.com/share/Random%20number/Random%20number/#6)
  * *********************************************************************************
  * @par ChangeLog:
  * <table>
@@ -28,7 +28,7 @@
 #include <iostream> 
 #include <stdint.h>
 
-const double two32 = 4294967296.0;
+const double __TWO32__ = 4294967296.0;
 
 /**
  * @brief 根据系统时间获取随机数种子，作为随机数生成算法中的初值
@@ -37,7 +37,7 @@ const double two32 = 4294967296.0;
 unsigned long _seed_(int _seed);
 
 /**
- * @brief 冯·诺依曼平方取中法用于生成符合均匀分布的随机序列
+ * @brief 冯·诺依曼平方取中法用于生成符合均匀分布的随机序列,不建议使用
  * @details     基本思想为：将数列中的第a(i)项（假设其有 m 位）平方，
  * 取得到的2m位数（若不足 2m 位，在最高位前补 0）中间部分的m位数字
  * 10^{[m/2]+1})至10^{[m/2]+m}的数作为a(i)的下一项 a(i+1)，由此产
@@ -58,33 +58,8 @@ unsigned long _seed_(int _seed);
  *  unsigned long long int   8 字节	     18446744073709551615 (0~2^64 - 1)
  * @return float* @c 
  */
-
 unsigned long int _MiddleSquare_(int seed);
 
-/**
- * @brief 
- * @tparam T 
- * @param  data             desc
- * @param  count            desc
- * @return T @c 
- */
-// template <class T>
-// void boxmuller(T* data,size_t count)
-// {
-//     assert(count % 2 == 0);
-//     static const T twopi = T(2.0*3.14159265358979323846);
-//     /// 均匀分布生成器
-//     LCG<T> r;
-//     for (size_t i = 0; i < count;i+=2)
-//     {   ///把 [0, 1) 的随机数转换成 (0, 1]，避免了 log(0) 的出现，不需要做rejection(拒绝采样)
-//         T u1 = 1.0f-r();
-//         T u2 = r();
-//         T radius = std::sqrt(-2* std::log(u1));
-//         T theta = twopi *u2;
-//         data[i] = radius * std::cos(theta);
-//         data[i+1] = radius * std::sin(theta);
-//     }
-// }
 /**
  * @brief 基于Wely等分布定理的平方取中法实现
  * @return T @c 
@@ -130,15 +105,14 @@ inline static T _WelySquare_()
 *  generator.                                                              *                                            *
 \**************************************************************************/
 /**
- * @brief  基于Wely序列的四轮平方取中随机数生成器的实现  
+ * @brief  基于Wely序列的四轮平方取中随机数生成器的实现，是满周期的（即生成的随机数在周期内不重复） 
  * @param  ctr              生成的随机数的序号，保证每次生成的随机数是不同的
- * @param  key              有keys.h存储的密钥，每个密钥可生成2^64个不重复的随机数，
+ * @param  key              有keys.h存储的密钥，每个密钥可生成2^32个不重复的随机数，
  * @see 2020-11-23 [Squares: A Fast Counter-Based RNG] (https://arxiv.org/abs/2004.06278v3)
  * @attention &emsp;&emsp;2020-05-19 论文[https://arxiv.org/abs/1704.00358v5](https://arxiv.org/abs/1704.00358v5) 
  * 提出了一种基于Wely序列的平方取中改良算法，克服了平方取中的"Zero mechanism"等问题。
  * @return uint32_t @c 
  */
-
 template<class T>
 inline static T _FourRoundWelySquares_(uint64_t ctr) 
 {
@@ -154,8 +128,11 @@ inline static T _FourRoundWelySquares_(uint64_t ctr)
 
     x = x*x + y; x = (x>>32) | (x<<32);       /* round 3 */
 
-    return ((x*x + z) >> 32) / two32;                   /* round 4 */
+    return ((x*x + z) >> 32) / __TWO32__ ;                   /* round 4 */
 }
 
+//MT19937 64位实现
+//http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/VERSIONS/C-LANG/mt19937-64.c
+void MT19937();
 
 #endif
