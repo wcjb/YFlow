@@ -61,12 +61,12 @@ int main(int argc, char** argv)
     // {
     //         cout << "int" << endl;
     // }
-	uint64_t a = 19;
-	for (int i = 0 ;i < a;i++)
-	{
-		float b = _wely_squares_<float>(i);
-		cout << b << endl;
-	}
+	unsigned long int c = _seed_(0);
+	
+	double d;
+	d = _LCG_<double>(c);
+	cout << d << endl;
+	
 	
 	
 	return 0;

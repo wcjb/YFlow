@@ -49,7 +49,7 @@ unsigned long _seed_(int _seed)
         unsigned long nowtime = local.tm_sec + local.tm_min*100 + local.tm_hour*10000 + local.tm_mday*1000000+local.tm_mon*100000000; 
         /// 由系统时间生成的随机数种子为9位整数
         /// 平方后已超过了long类型数字上限，故取其后四位作为随机数种子
-        return ((double)nowtime / 10000 - nowtime / 10000) * 10000;
+        return nowtime;
     }
     else
     {
@@ -68,7 +68,7 @@ unsigned long int _MiddleSquare_(int seed)
         num /= 10;
         inc++;
     }
-    int min = inc/4;
+    int min = inc/2;
     int max = inc / 2 + min;
     int temp[10];
 

@@ -28,13 +28,14 @@
 #include <iostream> 
 #include <stdint.h>
 
-const double __TWO32__ = 4294967296.0;
+const double __TWO32__ = 4294967296.0; ///2^32
+const unsigned long int __TWO31__ = 2147483647; ///2^31
 
 /**
  * @brief 根据系统时间获取随机数种子，作为随机数生成算法中的初值
  * @param  _seed            初始化随机数种子，0表示使用时间种子，其余整数则直接使用314159+_seed作为随机数种子
  */
-unsigned long _seed_(int _seed);
+unsigned long _seed_(int _seed = 0);
 
 /**
  * @brief 冯·诺依曼平方取中法用于生成符合均匀分布的随机序列,不建议使用
@@ -46,7 +47,6 @@ unsigned long _seed_(int _seed);
  * -# 选择一个m位数N(i)作为种子；
  * -# 计算N(i)的平方
  * @section C++数据类型
- * 
  *  数据类                   字节大小	        数值范围
  *  short int                2 字节	     -32768 〜+32767 (-2^15~2^15-1)
  *  unsigned short int       2 字节	     0 〜+65535 (0~2^16-1)
@@ -62,6 +62,12 @@ unsigned long int _MiddleSquare_(int seed);
 
 /**
  * @brief 基于Wely等分布定理的平方取中法实现
+ * @see [Wely序列](https://www.wikiwand.com/en/Weyl_sequence)
+ * @attention &emsp;&emsp;需要说明的是，在计算机中，Wely序列的整数形式通常用于生成离散的
+ * 均匀分布，而不是连续的分布。因为无法使用计算机表示无理数，所以使用有理数来进行近似，而所
+ * 有有理数都可以表示为分数即两个整数的比率。因此选择整数k，它相对于整数模数m为质数。在m为2
+ * 的幂的常见情况下，这等于要求k为奇数。此时，序列0,k,2k,3k,...是模m的均匀分布。即每个项的
+ * 余数的序列在被m除时将均匀地分布在间隔[0，m）中
  * @return T @c 
  */
 template<class T>
@@ -131,6 +137,25 @@ inline static T _FourRoundWelySquares_(uint64_t ctr)
     return ((x*x + z) >> 32) / __TWO32__ ;                   /* round 4 */
 }
 
+/**
+ * @brief   Kobayashi混合同余发生器的实现，该生成器为满周期 2^31 的混合同余发生器，其周期较长，
+ * 统计性质比较好，迭代式如下：
+ * x(n) = (314159269*x(n-1)+453806245) mod 2^31
+ * @see https://www.nkdacs.com/share/Random%20number/Random%20number/#6
+ * @attention &emsp;&emsp;同余发生器的原理是不断进行同余运算来迭代生成满足均匀分布的随机数，
+ * 其生成的随机数统计性质较好，但是由于其生成机制的缺陷，导致随机数相邻项之前存在强依赖，本实
+ * 现只用于学习使用，不做实际使用。
+ * 
+ * @tparam T 
+ * @param  seed           随机数种子
+ * @return T @c 
+ */
+template<class T>
+inline static T _LCG_(unsigned long seed)
+{
+    unsigned long x_n = (314159269 * seed +453806245) % __TWO31__;
+    return (T) x_n  / __TWO31__;
+}
 //MT19937 64位实现
 //http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/VERSIONS/C-LANG/mt19937-64.c
 void MT19937();
