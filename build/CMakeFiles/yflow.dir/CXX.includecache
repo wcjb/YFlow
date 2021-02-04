@@ -9,22 +9,10 @@
 C:/Users/wcjb/Documents/CodeSpace/YFlow/main.cpp
 iostream
 -
-source/Random.h
-C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.h
-
-C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.h
-time.h
--
-tools.h
+source/tools.h
 C:/Users/wcjb/Documents/CodeSpace/YFlow/source/tools.h
-iostream
+math.h
 -
-stdint.h
--
-keys.h
-C:/Users/wcjb/Documents/CodeSpace/YFlow/source/keys.h
-
-C:/Users/wcjb/Documents/CodeSpace/YFlow/source/keys.h
 
 C:/Users/wcjb/Documents/CodeSpace/YFlow/source/tools.h
 

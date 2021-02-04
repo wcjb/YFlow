@@ -33,8 +33,8 @@
  * */
 #include <iostream>
 using namespace std;
-#include "source/Random.h"
-
+#include "source/tools.h"
+#include<math.h>
 int main(int argc, char** argv)
 {
 	// vector<int> layer_szie = {2,2,8,2};
@@ -62,11 +62,9 @@ int main(int argc, char** argv)
     // {
     //         cout << "int" << endl;
     // }
-	unsigned long int c = _seed_(0);
-	
-	double d;
-	d = _LCG_<double>(c);
-	cout << d << endl;
+	float a = __ieee754_log(10);
+	float b=  log(10);
+	cout << a << endl << b;
 	
 	
 	

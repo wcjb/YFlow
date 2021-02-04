@@ -214,7 +214,6 @@ void MT19937();
    http://www.math.hiroshima-u.ac.jp/~m-mat/MT/emt.html
    email: m-mat @ math.sci.hiroshima-u.ac.jp (remove spaces)
 */
-
 //#include <stdio.h>
 // #define NN 312
 // #define MM 156
