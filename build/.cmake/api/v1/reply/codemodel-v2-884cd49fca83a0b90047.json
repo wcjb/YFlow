@@ -36,7 +36,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "Release",
 			"projects" : 
 			[
 				{
@@ -58,14 +58,14 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "source::@411ffd8adc737496fe19",
-					"jsonFile" : "target-source-Debug-1de566aa5aedf3ca5e28.json",
+					"jsonFile" : "target-source-Release-742838baa8adf270bfa4.json",
 					"name" : "source",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "yflow::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-yflow-Debug-ab7840e026a3888fe765.json",
+					"jsonFile" : "target-yflow-Release-a33e0b9388daf9f083fe.json",
 					"name" : "yflow",
 					"projectIndex" : 0
 				}
