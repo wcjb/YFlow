@@ -5,7 +5,7 @@
  * @version 0.0.1
  * @date 2021-01-25
  * @copyright Copyright © 2014-2021 weichijunbo.
- * 
+ * @see [math.h实现](https://zhuanlan.zhihu.com/p/80458536)
  * *********************************************************************************
  * @par ChangeLog:
  * <table>

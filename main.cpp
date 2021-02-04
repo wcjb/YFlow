@@ -34,6 +34,7 @@
 #include <iostream>
 using namespace std;
 #include "Random.h"
+
 int main(int argc, char** argv)
 {
 	// vector<int> layer_szie = {2,2,8,2};

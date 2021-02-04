@@ -10,6 +10,7 @@
  * 故采用随机数生成算法生成符合均匀分布(即一个周期内所有数据出现是等概率)的随机数，再利用均匀分布的随机数生成符合其它分布的随
  * 机数。
  * @see [随机数的前世今生](https://www.nkdacs.com/share/Random%20number/Random%20number/#6)
+ * @see [漫谈正态分布的生成](https://cosx.org/2015/06/generating-normal-distr-variates)
  * *********************************************************************************
  * @par ChangeLog:
  * <table>
