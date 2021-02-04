@@ -6,11 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/wcjb/Documents/CodeSpace/YFlow/main.cpp
-iostream
--
-source/Random.h
+C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.cpp
+Random.h
 C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.h
+TargetConditionals.h
+C:/Users/wcjb/Documents/CodeSpace/YFlow/source/TargetConditionals.h
+TargetConditionals.h
+C:/Users/wcjb/Documents/CodeSpace/YFlow/source/TargetConditionals.h
 
 C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.h
 time.h

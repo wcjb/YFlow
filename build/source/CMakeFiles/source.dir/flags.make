@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = 
 
-CXX_FLAGS =  -g -g
+CXX_FLAGS = -g
 

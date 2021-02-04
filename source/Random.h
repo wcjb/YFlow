@@ -36,7 +36,7 @@ const unsigned long int __TWO31__ = 2147483647; ///2^31
  * @brief 根据系统时间获取随机数种子，作为随机数生成算法中的初值
  * @param  _seed            初始化随机数种子，0表示使用时间种子，其余整数则直接使用314159+_seed作为随机数种子
  */
-unsigned long _seed_(int _seed = 0);
+unsigned long _seed_(int _seed);
 
 /**
  * @brief 冯·诺依曼平方取中法用于生成符合均匀分布的随机序列,不建议使用

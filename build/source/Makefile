@@ -98,14 +98,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wcjb\Documents\CodeSpace\YFlow\build\CMakeFiles C:\Users\wcjb\Documents\CodeSpace\YFlow\build\\CMakeFiles\progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wcjb\Documents\CodeSpace\YFlow\build\CMakeFiles C:\Users\wcjb\Documents\CodeSpace\YFlow\build\source\\CMakeFiles\progress.marks
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 source/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wcjb\Documents\CodeSpace\YFlow\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 clean
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 source/clean
 .PHONY : clean
 
 # The main clean target
@@ -115,71 +115,87 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 preinstall
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 source/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 preinstall
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 source/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named yflow
+# Convenience name for target.
+source/CMakeFiles/source.dir/rule:
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 source/CMakeFiles/source.dir/rule
+.PHONY : source/CMakeFiles/source.dir/rule
 
-# Build rule for target.
-yflow: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 yflow
-.PHONY : yflow
+# Convenience name for target.
+source: source/CMakeFiles/source.dir/rule
 
-# fast build rule for target.
-yflow/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\yflow.dir\build.make CMakeFiles/yflow.dir/build
-.PHONY : yflow/fast
-
-#=============================================================================
-# Target rules for targets named source
-
-# Build rule for target.
-source: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 source
 .PHONY : source
 
 # fast build rule for target.
 source/fast:
-	$(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/build
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/build
 .PHONY : source/fast
 
-main.obj: main.cpp.obj
+Random.obj: Random.cpp.obj
 
-.PHONY : main.obj
+.PHONY : Random.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\yflow.dir\build.make CMakeFiles/yflow.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+Random.cpp.obj:
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/Random.cpp.obj
+.PHONY : Random.cpp.obj
 
-main.i: main.cpp.i
+Random.i: Random.cpp.i
 
-.PHONY : main.i
+.PHONY : Random.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\yflow.dir\build.make CMakeFiles/yflow.dir/main.cpp.i
-.PHONY : main.cpp.i
+Random.cpp.i:
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/Random.cpp.i
+.PHONY : Random.cpp.i
 
-main.s: main.cpp.s
+Random.s: Random.cpp.s
 
-.PHONY : main.s
+.PHONY : Random.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\yflow.dir\build.make CMakeFiles/yflow.dir/main.cpp.s
-.PHONY : main.cpp.s
+Random.cpp.s:
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/Random.cpp.s
+.PHONY : Random.cpp.s
+
+tools.obj: tools.cpp.obj
+
+.PHONY : tools.obj
+
+# target to build an object file
+tools.cpp.obj:
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/tools.cpp.obj
+.PHONY : tools.cpp.obj
+
+tools.i: tools.cpp.i
+
+.PHONY : tools.i
+
+# target to preprocess a source file
+tools.cpp.i:
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/tools.cpp.i
+.PHONY : tools.cpp.i
+
+tools.s: tools.cpp.s
+
+.PHONY : tools.s
+
+# target to generate assembly for a file
+tools.cpp.s:
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(MAKE) $(MAKESILENT) -f source\CMakeFiles\source.dir\build.make source/CMakeFiles/source.dir/tools.cpp.s
+.PHONY : tools.cpp.s
 
 # Help Target
 help:
@@ -190,10 +206,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... source
-	@echo ... yflow
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... Random.obj
+	@echo ... Random.i
+	@echo ... Random.s
+	@echo ... tools.obj
+	@echo ... tools.i
+	@echo ... tools.s
 .PHONY : help
 
 
@@ -205,6 +223,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\wcjb\Documents\CodeSpace\YFlow\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
