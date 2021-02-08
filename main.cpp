@@ -34,7 +34,7 @@
 #include <iostream>
 using namespace std;
 #include "source/tools.h"
-#include<math.h>
+
 int main(int argc, char** argv)
 {
 	// vector<int> layer_szie = {2,2,8,2};
@@ -63,10 +63,7 @@ int main(int argc, char** argv)
     //         cout << "int" << endl;
     // }
 	float a = __ieee754_log(10);
-	float b=  log(10);
-	cout << a << endl << b;
-	
-	
-	
+	cout << a << endl;
+
 	return 0;
 }
