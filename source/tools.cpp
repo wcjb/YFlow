@@ -147,3 +147,49 @@ double __ieee754_log(double x)
 		     return dk*ln2_hi-((s*(f-R)-dk*ln2_lo)-f);
 	}
 }
+
+double __simpson_log(double x)
+{
+	return 0.0;
+}
+
+void swap(int *x, int *y)
+{   
+    //声明变量temp为一个整型变量，并且它的内容是x所指向的地址的内容
+    int temp = *x;
+    //将y指向的地址中的内容存储到x所指向的地址
+    *x = *y;
+    //将temp中的内容存储到y所指向的地址
+    *y = temp;
+}
+
+void selection_sort(int list [], int n)
+{
+    int min;
+    for(int i = 0; i < n-1; i++)
+    {
+        min = i;
+        for(int j = i+1; j < n; j++)
+        {
+            if(list[j] < list[min])
+            {
+                min = j;
+            }
+        }
+        swap(&list[i],&list[min]);
+    }
+}
+
+void bubble_sort(int list[], int n)
+{
+    for (int i = 0;i < n;i++)
+    {
+        for (int j = 0;j < n-(i+1);j++)
+        {
+            if (list[j] > list[j+1])
+            {
+                swap(&list[j],&list[j+1]);
+            }
+        }
+    }
+}

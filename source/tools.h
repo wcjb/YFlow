@@ -98,7 +98,15 @@ long long binpow(long long a, long long b);
 
 double __ieee754_log(double x);  //ln的remes
 
-double __simpson_log(double x)
+/**
+ * @brief 基于自适应辛普森的ln函数实现
+ * @param  x                desc
+ * @note ln(x)可表示为函数1/t在[1,x]上的积分变上限函数，再使用自适应辛普森公式计算该积分
+ * 即可得到函数值
+ * @return double @c 
+ */
+double __simpson_log(double x);
+
 /**
  * @brief 实现任意底数n的对数函数
  * 由于计算机无法存储浮点数的精确值（浮点数的存储方法可以参考 IEEE 754，这里不再赘述），
@@ -116,4 +124,33 @@ double log(double x,int n);
  * @return float @c 
  */
 float sqrt(float x);
+
+/**
+ * @brief 变量值交换
+ * @param  x                desc
+ * @param  y                desc
+ */
+void swap(int *x, int *y);
+
+/**
+ * @brief 选择排序的C++实现,其原理为首先找出序列中的最小（最大）元素，
+ * 并置于序列的起始位置，再从剩下的元素中找到最小（最大元素）置于已排
+ * 序序列的末尾，以此类推，直到确定最后一个元素的位置，则此时所有元素
+ * 排序完成。算法的时间复杂度为O(n^2)
+ * @param  list             desc
+ * @param  n                desc
+ */
+void selection_sort(int list [], int n);
+
+/**
+ * @brief 冒泡排序算法的C++实现，其原理为重复访问序列中的元素，比较
+ * 两个相邻元素的大小，如果顺序错误（此处的顺序错误指不符合理想顺序），
+ * 则将它们的位置进调换，一直重复，直到没有元素需要进行位置交换为止。
+ * 冒泡排序名称的由来是因为较小的元素会慢慢‘浮’到序列的顶端。算法的
+ * 时间复杂度为O(n^2)
+ * @param  list             desc
+ * @param  n                desc
+ */
+void bubble_sort(int list[], int n);
+
 #endif 
