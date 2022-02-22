@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YFlow: class类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YFlow
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">class类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>实现张量数据结构，用于搭建神经网络  
+ <a href="../../d9/d6d/classclass.html#details">更多...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >实现张量数据结构，用于搭建神经网络 </p>
+<p >[<a class="el" href="../../dc/db8/_tensor_8h.html">Tensor.h</a>] [&lt;Tensor&gt;] </p><dl class="section author"><dt>作者</dt><dd>殉道者</dd></dl>
+<p>&emsp;&emsp;实现张量数据结构，用于搭建神经网络，本质是多维矩阵。需要注意的是，当进行2维以上张量的运算时，两个张量之间的 加减和二维矩阵类似。而两个高维张量的乘法可参考Tensorflow中matmul的源码说明来看，如果张量的dimention大于2， 实际上进行的会是batch_mat_mul,此时进行叉乘的是batch中的每一个切片（slice），即高维张量的运算实质还是2维张 量的运算，只不过是在更高维度的切片下，如下所示： output[..., :, :] = matrix(x[..., :, :]) * matrix(y[..., :, :]) 使用tensorflow验证如下: </p><div class="fragment"><div class="line">In [2]: a</div>
+<div class="line">Out[2]: </div>
+<div class="line"> &lt;tf.Tensor: shape=(2, 3, 2), dtype=int32, numpy=</div>
+<div class="line">array([[[1, 1],</div>
+<div class="line">         [2, 2],</div>
+<div class="line">         [3, 3]],</div>
+<div class="line"> </div>
+<div class="line">     [[4, 4],</div>
+<div class="line">         [5, 5],</div>
+<div class="line">         [6, 6]]])&gt;</div>
+<div class="line"> </div>
+<div class="line">In [3]: c = tf.reshape(a,(2,2,3))</div>
+<div class="line"> </div>
+<div class="line">In [4]: c</div>
+<div class="line">Out[4]: </div>
+<div class="line"> &lt;tf.Tensor: shape=(2, 2, 3), dtype=int32, numpy=</div>
+<div class="line"> array([[[1, 1, 2],</div>
+<div class="line">         [2, 3, 3]],</div>
+<div class="line"> </div>
+<div class="line">     [[4, 4, 5],</div>
+<div class="line">         [5, 6, 6]]])&gt;</div>
+<div class="line"> </div>
+<div class="line"> In [5]: tf.matmul(a,c)</div>
+<div class="line"> Out[5]: </div>
+<div class="line"> &lt;tf.Tensor: shape=(2, 3, 3), dtype=int32, numpy=</div>
+<div class="line"> array([[[ 3,  4,  5],</div>
+<div class="line">         [ 6,  8, 10],</div>
+<div class="line">         [ 9, 12, 15]],</div>
+<div class="line"> </div>
+<div class="line">     [[36, 40, 44],</div>
+<div class="line">       [45, 50, 55],</div>
+<div class="line">          [54, 60, 66]]])&gt; </div>
+</div><!-- fragment --><p> 则要求高维张量相乘符合如下规则：</p><ol type="1">
+<li>两个张量能相乘，则二者除了最后两个维度可以不相等外，其它维度必须相等；</li>
+<li>两个张量能相乘，则二者的最后两个维度必须满足二维矩阵相乘的条件；</li>
+</ol>
+<dl class="section attention"><dt>注意</dt><dd>另外，因为张量乘法本质上为矩阵乘法，由于在神经网络中设计到大量的巨型矩阵的乘法，所以很有必要 优化矩阵乘法的计算逻辑，本实现使用通用矩阵乘（GEMM，General <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> Multiplication）优化矩阵 乘法。可参考下文: <a href="https://jackwish.net/2019/gemm-optimization.html">通用矩阵乘（GEMM）优化算法</a> <a href="https://zhuanlan.zhihu.com/p/66958390">通用矩阵乘（GEMM）优化与卷积计算</a> 常规的矩阵乘法计算算法的时间复杂度为O(n^3) = O(n^(log2(8)))<ol type="1">
+<li>分块矩阵计算</li>
+<li>Strassen 算法，时间复杂度是O(n^2.807) = O(n^(log2(7)))</li>
+<li>Coppersmith-Winograd算法，时间复杂度是O（n^2.38) </li>
+</ol>
+</dd></dl>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li>C:/Users/wcjb/Documents/CodeSpace/YFlow/source/<a class="el" href="../../dc/db8/_tensor_8h_source.html">Tensor.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

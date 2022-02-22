@@ -1,0 +1,68 @@
+\hypertarget{layer_8h_source}{}\doxysection{layer.\+h}
+\label{layer_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/layer.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/layer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tensor_8h}{Tensor.h}}"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}activations.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_layer}{Layer}}}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7 \textcolor{keyword}{private}:}
+\DoxyCodeLine{8     \textcolor{keywordtype}{int} input\_size;}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} output\_size;}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_tensor}{Tensor<int>}} weights;}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_tensor}{Tensor}} bias;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{string} ftype;}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_layer}{Layer}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \_input\_size, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \_output\_size, \textcolor{keyword}{const} \textcolor{keywordtype}{string} \_ftype) : input\_size(\_input\_size), output\_size(\_output\_size), ftype(\_ftype) }
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16         weights = \mbox{\hyperlink{class_tensor}{Tensor}}(input\_size, output\_size);}
+\DoxyCodeLine{17         bias = \mbox{\hyperlink{class_tensor}{Tensor}}(output\_size,1);}
+\DoxyCodeLine{18     \}}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_tensor}{Tensor}} GetWeight(\textcolor{keywordtype}{void})\textcolor{keyword}{ const}}
+\DoxyCodeLine{20 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{21         \textcolor{keywordflow}{return} weights;}
+\DoxyCodeLine{22     \}}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_tensor}{Tensor}} GetBias(\textcolor{keywordtype}{void})\textcolor{keyword}{ const}}
+\DoxyCodeLine{24 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{25         \textcolor{keywordflow}{return} bias;}
+\DoxyCodeLine{26     \}}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_tensor}{Tensor}} Forward(\textcolor{keyword}{const} \mbox{\hyperlink{class_tensor}{Tensor}} mat);}
+\DoxyCodeLine{28     \mbox{\hyperlink{class_tensor}{Tensor}} BackPropagation(\textcolor{keyword}{const} \mbox{\hyperlink{class_tensor}{Tensor}} mat);}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 \mbox{\hyperlink{class_tensor}{Tensor}} Layer::Forward(\textcolor{keyword}{const} \mbox{\hyperlink{class_tensor}{Tensor}} mat)}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32     }
+\DoxyCodeLine{33     \textcolor{keywordflow}{if} (mat.col != input\_size)}
+\DoxyCodeLine{34     \{}
+\DoxyCodeLine{35         \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}输入矩阵维度和权重矩阵维度不匹配！请检查"{}};}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37     \textcolor{keywordflow}{if} (this-\/>ftype == \textcolor{stringliteral}{"{}relu"{}})}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         \mbox{\hyperlink{classactivations}{activations}} activation(\textcolor{stringliteral}{"{}relu"{}});}
+\DoxyCodeLine{40         \textcolor{keywordflow}{return} activation.Relu(mat * weights + bias);}
+\DoxyCodeLine{41     \}}
+\DoxyCodeLine{42     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this-\/>ftype == \textcolor{stringliteral}{"{}logistic"{}})}
+\DoxyCodeLine{43     \{}
+\DoxyCodeLine{44         \mbox{\hyperlink{classactivations}{activations}} activation(\textcolor{stringliteral}{"{}logistic"{}});}
+\DoxyCodeLine{45         \textcolor{keywordflow}{return} activation.Logistic(mat * weights + bias);}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this-\/>ftype == \textcolor{stringliteral}{"{}leakyrelu"{}})}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49         \mbox{\hyperlink{classactivations}{activations}} activation(\textcolor{stringliteral}{"{}leakyrelu"{}});}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} activation.LeakyRelu(mat * weights + bias);}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{53     \{}
+\DoxyCodeLine{54         \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}未定义激活函数"{}};}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \mbox{\hyperlink{class_tensor}{Tensor}} Layer::BackPropagation(\textcolor{keyword}{const} \mbox{\hyperlink{class_tensor}{Tensor}} mat)}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{61 \}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

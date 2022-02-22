@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YFlow: C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.h 文件参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YFlow
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">Random.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>随机数生成器实现  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/da5/tools_8h_source.html">tools.h</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d01/keys_8h_source.html">keys.h</a>&quot;</code><br />
+</div>
+<p><a href="../../d0/d80/_random_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ac84b4255e0ba780b3a51f82fd0fd08cb"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d80/_random_8h.html#ac84b4255e0ba780b3a51f82fd0fd08cb">_seed_</a> (int _seed)</td></tr>
+<tr class="memdesc:ac84b4255e0ba780b3a51f82fd0fd08cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">2^31  <a href="../../d0/d80/_random_8h.html#ac84b4255e0ba780b3a51f82fd0fd08cb">更多...</a><br /></td></tr>
+<tr class="separator:ac84b4255e0ba780b3a51f82fd0fd08cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9efa7bb4f1c11ce23e0314ef942913"><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d80/_random_8h.html#abe9efa7bb4f1c11ce23e0314ef942913">_MiddleSquare_</a> (int seed)</td></tr>
+<tr class="memdesc:abe9efa7bb4f1c11ce23e0314ef942913"><td class="mdescLeft">&#160;</td><td class="mdescRight">冯·诺依曼平方取中法用于生成符合均匀分布的随机序列,不建议使用  <a href="../../d0/d80/_random_8h.html#abe9efa7bb4f1c11ce23e0314ef942913">更多...</a><br /></td></tr>
+<tr class="separator:abe9efa7bb4f1c11ce23e0314ef942913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f19a70a6f2964b5a9c9d20d6195595c"><td class="memItemLeft" align="right" valign="top"><a id="a4f19a70a6f2964b5a9c9d20d6195595c" name="a4f19a70a6f2964b5a9c9d20d6195595c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MT19937</b> ()</td></tr>
+<tr class="separator:a4f19a70a6f2964b5a9c9d20d6195595c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a1b7a15f3f7fac6c88c97c8505c0fb556"><td class="memItemLeft" align="right" valign="top"><a id="a1b7a15f3f7fac6c88c97c8505c0fb556" name="a1b7a15f3f7fac6c88c97c8505c0fb556"></a>
+const double&#160;</td><td class="memItemRight" valign="bottom"><b>__TWO32__</b> = 4294967296.0</td></tr>
+<tr class="separator:a1b7a15f3f7fac6c88c97c8505c0fb556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d85b120a9ca8ac4615ceb90d3361abf"><td class="memItemLeft" align="right" valign="top"><a id="a9d85b120a9ca8ac4615ceb90d3361abf" name="a9d85b120a9ca8ac4615ceb90d3361abf"></a>
+const unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><b>__TWO31__</b> = 2147483647</td></tr>
+<tr class="memdesc:a9d85b120a9ca8ac4615ceb90d3361abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">2^32 <br /></td></tr>
+<tr class="separator:a9d85b120a9ca8ac4615ceb90d3361abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >随机数生成器实现 </p>
+<dl class="section author"><dt>作者</dt><dd>殉道者 (<a href="#" onclick="location.href='mai'+'lto:'+'wcj'+'by'+'jx@'+'gm'+'ail'+'.c'+'om'; return false;">wcjby<span class="obfuscator">.nosp@m.</span>jx@g<span class="obfuscator">.nosp@m.</span>mail.<span class="obfuscator">.nosp@m.</span>com</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.0.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2021-01-26 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright © 2014-2021 weichijunbo.</dd></dl>
+<p>随机数生成器的实现，实现了绝大部分的随机数生成算法包括冯·诺伊曼平方取中法及其改良算法、 线性同余发生器、梅森旋转演算法，FSR发生器、组合发生器（因为效率原因，未作实现）。由于需要生成符合常见分布的随机数， 故采用随机数生成算法生成符合均匀分布(即一个周期内所有数据出现是等概率)的随机数，再利用均匀分布的随机数生成符合其它分布的随 机数。 </p><dl class="section see"><dt>参见</dt><dd><a href="https://www.nkdacs.com/share/Random%20number/Random%20number/#6">随机数的前世今生</a> </dd>
+<dd>
+<a href="https://cosx.org/2015/06/generating-normal-distr-variates">漫谈正态分布的生成</a> <hr  />
+ </dd></dl>
+<dl class="section user"><dt>ChangeLog:</dt><dd><table class="doxtable">
+<tr>
+<th>Date </th><th>Version </th><th>Author </th><th>Description </th></tr>
+<tr>
+<td>2021-01-26 </td><td>0.0.1 </td><td>殉道者 </td><td>内容 </td></tr>
+</table>
+<hr  />
+ </dd></dl>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="abe9efa7bb4f1c11ce23e0314ef942913" name="abe9efa7bb4f1c11ce23e0314ef942913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe9efa7bb4f1c11ce23e0314ef942913">&#9670;&nbsp;</a></span>_MiddleSquare_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long int _MiddleSquare_ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>seed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>冯·诺依曼平方取中法用于生成符合均匀分布的随机序列,不建议使用 </p>
+<p >基本思想为：将数列中的第a(i)项（假设其有 m 位）平方， 取得到的2m位数（若不足 2m 位，在最高位前补 0）中间部分的m位数字 10^{[m/2]+1})至10^{[m/2]+m}的数作为a(i)的下一项 a(i+1)，由此产 生一个伪随机数数列。 </p>
+<h1><a class="anchor" id="算法描述"></a>
+算法描述</h1>
+<ol type="1">
+<li>选择一个m位数N(i)作为种子；</li>
+<li>计算N(i)的平方 </li>
+</ol>
+<p >函数返回从1970年1月1日到当前时间系统所经历的秒数</p>
+<div class="fragment"><div class="line"> </div>
+<div class="line">errno_t localtime_s(</div>
+<div class="line">                     <span class="keyword">struct</span> tm* _tm,           </div>
+<div class="line">                     <span class="keyword">const</span> time_t *time        </div>
+<div class="line"> );</div>
+</div><!-- fragment --><p >Defined in header &lt;time.h&gt; struct tm *localtime ( const time_t *timer ); (1) struct tm *localtime_r( const time_t *timer, struct tm *buf ); (2) (since C23) struct tm *localtime_s( const time_t *restrict timer, struct tm *restrict buf ); (3) (since C11) 1) Converts given time since epoch (a time_t value pointed to by timer) into calendar time, expressed in local time, in the struct tm format. The result is stored in static storage and a pointer to that static storage is returned. 2) Same as (1), except that the function uses user-provided storage buf for the result. 3) Same as (1), except that the function uses user-provided storage buf for the result and that the following errors are detected at runtime and call the currently installed constraint handler function: timer or buf is a null pointer As with all bounds-checked functions, localtime_s is only guaranteed to be available if <b>STDC_LIB_EXT1</b> is defined by the implementation and if the user defines <b>STDC_WANT_LIB_EXT1</b> to the integer constant 1 before including time.h. 通过预编译宏来判断当前系统：https://www.jianshu.com/p/c92e8b81ad04</p>
+
+</div>
+</div>
+<a id="ac84b4255e0ba780b3a51f82fd0fd08cb" name="ac84b4255e0ba780b3a51f82fd0fd08cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac84b4255e0ba780b3a51f82fd0fd08cb">&#9670;&nbsp;</a></span>_seed_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long _seed_ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_seed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>2^31 </p>
+<p >根据系统时间获取随机数种子，作为随机数生成算法中的初值 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_seed</td><td>初始化随机数种子，0表示使用时间种子，其余整数则直接使用314159+_seed作为随机数种子 </td></tr>
+  </table>
+  </dd>
+</dl>
+<p >函数返回从1970年1月1日到当前时间系统所经历的秒数</p>
+<div class="fragment"><div class="line"> </div>
+<div class="line">errno_t localtime_s(</div>
+<div class="line">                     <span class="keyword">struct</span> tm* _tm,           </div>
+<div class="line">                     <span class="keyword">const</span> time_t *time        </div>
+<div class="line"> );</div>
+</div><!-- fragment --><p >Defined in header &lt;time.h&gt; struct tm *localtime ( const time_t *timer ); (1) struct tm *localtime_r( const time_t *timer, struct tm *buf ); (2) (since C23) struct tm *localtime_s( const time_t *restrict timer, struct tm *restrict buf ); (3) (since C11) 1) Converts given time since epoch (a time_t value pointed to by timer) into calendar time, expressed in local time, in the struct tm format. The result is stored in static storage and a pointer to that static storage is returned. 2) Same as (1), except that the function uses user-provided storage buf for the result. 3) Same as (1), except that the function uses user-provided storage buf for the result and that the following errors are detected at runtime and call the currently installed constraint handler function: timer or buf is a null pointer As with all bounds-checked functions, localtime_s is only guaranteed to be available if <b>STDC_LIB_EXT1</b> is defined by the implementation and if the user defines <b>STDC_WANT_LIB_EXT1</b> to the integer constant 1 before including time.h. 通过预编译宏来判断当前系统：https://www.jianshu.com/p/c92e8b81ad04</p>
+<p >由系统时间生成的随机数种子为9位整数 平方后已超过了long类型数字上限，故取其后四位作为随机数种子</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

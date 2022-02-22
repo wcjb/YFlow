@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YFlow: C:/Users/wcjb/Documents/CodeSpace/YFlow/source/tools.h 源文件</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YFlow
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">tools.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/da5/tools_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#ac95c3156aa9bc02c8aa77d5faa7dd2ed">sys</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">inline</span> <span class="keyword">static</span> T abs(T x)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> x&gt;0 ? x:(-x);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>} </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">float</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#a55a133284c9a7f0b98e5fc2af98a67e4">InvSqrt</a> (<span class="keywordtype">float</span> x);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#a4ac7e00b51bccbeed77e44974947570d">IsBigEndian</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">long</span> <span class="keywordtype">long</span> binpow(<span class="keywordtype">long</span> <span class="keywordtype">long</span> a, <span class="keywordtype">long</span> <span class="keywordtype">long</span> b);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">double</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#af56fa6fd935f9e901926e738068f04ca">__ieee754_log</a>(<span class="keywordtype">double</span> x);  <span class="comment">//ln的remes</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keywordtype">double</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#a299923f0ae7725b0cb3168d743fea53d">__simpson_log</a>(<span class="keywordtype">double</span> x);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="../../d5/da5/tools_8h.html#a2ecbbc8209107f108d54ed8730be5100">  127</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#a2ecbbc8209107f108d54ed8730be5100">log</a>(<span class="keywordtype">double</span> x,<span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="../../d5/da5/tools_8h.html#ac9159739323a7ca5cab03be69aae1b74">  134</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#ac9159739323a7ca5cab03be69aae1b74">_sqrt</a>(<span class="keywordtype">float</span> x);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#acd3415eef442ced2b5e064f95f04b624">swap</a>(<span class="keywordtype">int</span> *x, <span class="keywordtype">int</span> *y);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#ac6a79a9cb059f501247f6912aaa12198">selection_sort</a>(<span class="keywordtype">int</span> list [], <span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/da5/tools_8h.html#a0675fdf5a735134e050730db5dbea528">bubble_sort</a>(<span class="keywordtype">int</span> list[], <span class="keywordtype">int</span> n);</div>
+<div class="ttc" id="atools_8h_html_a0675fdf5a735134e050730db5dbea528"><div class="ttname"><a href="../../d5/da5/tools_8h.html#a0675fdf5a735134e050730db5dbea528">bubble_sort</a></div><div class="ttdeci">void bubble_sort(int list[], int n)</div><div class="ttdoc">冒泡排序算法的C++实现，其原理为重复访问序列中的元素，比较 两个相邻元素的大小，如果顺序错误（此处的顺序错误指不符合理想顺序）， 则将它们的位置进调换，一直重复，直到没有元素需要进行位置交换为止。 冒...</div><div class="ttdef"><b>Definition:</b> tools.cpp:186</div></div>
+<div class="ttc" id="atools_8h_html_a299923f0ae7725b0cb3168d743fea53d"><div class="ttname"><a href="../../d5/da5/tools_8h.html#a299923f0ae7725b0cb3168d743fea53d">__simpson_log</a></div><div class="ttdeci">double __simpson_log(double x)</div><div class="ttdoc">基于自适应辛普森的ln函数实现</div><div class="ttdef"><b>Definition:</b> tools.cpp:154</div></div>
+<div class="ttc" id="atools_8h_html_a2ecbbc8209107f108d54ed8730be5100"><div class="ttname"><a href="../../d5/da5/tools_8h.html#a2ecbbc8209107f108d54ed8730be5100">log</a></div><div class="ttdeci">double log(double x, int n)</div><div class="ttdoc">实现任意底数n的对数函数 由于计算机无法存储浮点数的精确值（浮点数的存储方法可以参考 IEEE 754，这里不再赘述）， 而指数函数和对数函数的参数和返回值均为浮点数，因此运算过程中会存在误差。</div></div>
+<div class="ttc" id="atools_8h_html_a4ac7e00b51bccbeed77e44974947570d"><div class="ttname"><a href="../../d5/da5/tools_8h.html#a4ac7e00b51bccbeed77e44974947570d">IsBigEndian</a></div><div class="ttdeci">int IsBigEndian()</div><div class="ttdoc">快速幂实现</div><div class="ttdef"><b>Definition:</b> tools.cpp:51</div></div>
+<div class="ttc" id="atools_8h_html_a55a133284c9a7f0b98e5fc2af98a67e4"><div class="ttname"><a href="../../d5/da5/tools_8h.html#a55a133284c9a7f0b98e5fc2af98a67e4">InvSqrt</a></div><div class="ttdeci">float InvSqrt(float x)</div><div class="ttdoc">基于牛顿迭代的快速平方根倒数算法(x(n+1) = x(n)-f(x(n))/f'(x(n)))</div><div class="ttdef"><b>Definition:</b> tools.cpp:29</div></div>
+<div class="ttc" id="atools_8h_html_ac6a79a9cb059f501247f6912aaa12198"><div class="ttname"><a href="../../d5/da5/tools_8h.html#ac6a79a9cb059f501247f6912aaa12198">selection_sort</a></div><div class="ttdeci">void selection_sort(int list[], int n)</div><div class="ttdoc">选择排序的C++实现,其原理为首先找出序列中的最小（最大）元素， 并置于序列的起始位置，再从剩下的元素中找到最小（最大元素）置于已排 序序列的末尾，以此类推，直到确定最后一个元素的位置，则此时所有元素 ...</div><div class="ttdef"><b>Definition:</b> tools.cpp:169</div></div>
+<div class="ttc" id="atools_8h_html_ac9159739323a7ca5cab03be69aae1b74"><div class="ttname"><a href="../../d5/da5/tools_8h.html#ac9159739323a7ca5cab03be69aae1b74">_sqrt</a></div><div class="ttdeci">float _sqrt(float x)</div><div class="ttdoc">平方根函数实现</div></div>
+<div class="ttc" id="atools_8h_html_ac95c3156aa9bc02c8aa77d5faa7dd2ed"><div class="ttname"><a href="../../d5/da5/tools_8h.html#ac95c3156aa9bc02c8aa77d5faa7dd2ed">sys</a></div><div class="ttdeci">int sys(void)</div><div class="ttdoc">判断当前系统类型</div><div class="ttdef"><b>Definition:</b> tools.cpp:3</div></div>
+<div class="ttc" id="atools_8h_html_acd3415eef442ced2b5e064f95f04b624"><div class="ttname"><a href="../../d5/da5/tools_8h.html#acd3415eef442ced2b5e064f95f04b624">swap</a></div><div class="ttdeci">void swap(int *x, int *y)</div><div class="ttdoc">变量值交换</div><div class="ttdef"><b>Definition:</b> tools.cpp:159</div></div>
+<div class="ttc" id="atools_8h_html_af56fa6fd935f9e901926e738068f04ca"><div class="ttname"><a href="../../d5/da5/tools_8h.html#af56fa6fd935f9e901926e738068f04ca">__ieee754_log</a></div><div class="ttdeci">double __ieee754_log(double x)</div><div class="ttdoc">基于泰勒级数和Remez算法的ln函数计算实现</div><div class="ttdef"><b>Definition:</b> tools.cpp:65</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

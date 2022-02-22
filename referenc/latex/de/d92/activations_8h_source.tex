@@ -1,0 +1,73 @@
+\hypertarget{activations_8h_source}{}\doxysection{activations.\+h}
+\label{activations_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/activations.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/activations.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tensor_8h}{Tensor.h}}"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{classactivations}{activations}}}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7 \textcolor{keyword}{private}:}
+\DoxyCodeLine{8     \textcolor{keywordtype}{string} type;}
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{classactivations}{activations}}(\textcolor{keywordtype}{string} functype) : type(functype) \{\};}
+\DoxyCodeLine{11     }
+\DoxyCodeLine{12     \mbox{\hyperlink{class_tensor}{Tensor}} \textcolor{keyword}{inline} Logistic(\textcolor{keyword}{const} \mbox{\hyperlink{class_tensor}{Tensor}} mat)}
+\DoxyCodeLine{13     \{   }
+\DoxyCodeLine{14         \mbox{\hyperlink{class_tensor}{Tensor}} logistic(mat);}
+\DoxyCodeLine{15         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < mat.row; i++)}
+\DoxyCodeLine{16         \{}
+\DoxyCodeLine{17             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < mat.col; j++)}
+\DoxyCodeLine{18             \{}
+\DoxyCodeLine{19                 logistic.num[i][j] = 1/(1+exp(-\/logistic.num[i][j]));}
+\DoxyCodeLine{20             \}}
+\DoxyCodeLine{21         \}}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} logistic;}
+\DoxyCodeLine{23     \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \mbox{\hyperlink{class_tensor}{Tensor}} \textcolor{keyword}{inline} Relu(\textcolor{keyword}{const} \mbox{\hyperlink{class_tensor}{Tensor}} mat)}
+\DoxyCodeLine{26     \{}
+\DoxyCodeLine{27         \mbox{\hyperlink{class_tensor}{Tensor}} relu(mat);}
+\DoxyCodeLine{28         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < mat.row; i++)}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < mat.col; j++)}
+\DoxyCodeLine{31             \{}
+\DoxyCodeLine{32                 \textcolor{keywordflow}{if} (relu.num[i][j] >= 0)}
+\DoxyCodeLine{33                 \{}
+\DoxyCodeLine{34                     relu.num[i][j] = relu.num[i][j];}
+\DoxyCodeLine{35                 \}}
+\DoxyCodeLine{36                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{37                 \{}
+\DoxyCodeLine{38                     relu.num[i][j] = 0;}
+\DoxyCodeLine{39                 \}}
+\DoxyCodeLine{40             \}}
+\DoxyCodeLine{41         \}}
+\DoxyCodeLine{42         \textcolor{keywordflow}{return} relu;}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44         }
+\DoxyCodeLine{45     \mbox{\hyperlink{class_tensor}{Tensor}} \textcolor{keyword}{inline} LeakyRelu(\textcolor{keyword}{const} \mbox{\hyperlink{class_tensor}{Tensor}} mat,\textcolor{keywordtype}{double} lambda = 0.01)}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \mbox{\hyperlink{class_tensor}{Tensor}} leakyrelu(mat);}
+\DoxyCodeLine{49         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < mat.row; i++)}
+\DoxyCodeLine{50         \{}
+\DoxyCodeLine{51             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < mat.col; j++)}
+\DoxyCodeLine{52             \{}
+\DoxyCodeLine{53                 \textcolor{keywordflow}{if} (leakyrelu.num[i][j] >= 0)}
+\DoxyCodeLine{54                 \{}
+\DoxyCodeLine{55                     leakyrelu.num[i][j] = leakyrelu.num[i][j];}
+\DoxyCodeLine{56                 \}}
+\DoxyCodeLine{57                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{58                 \{}
+\DoxyCodeLine{59                     leakyrelu.num[i][j] = lambda*leakyrelu.num[i][j];}
+\DoxyCodeLine{60                 \}}
+\DoxyCodeLine{61             \}}
+\DoxyCodeLine{62         \}}
+\DoxyCodeLine{63         \textcolor{keywordflow}{return} leakyrelu;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66     }
+\DoxyCodeLine{67 \};}
+
+\end{DoxyCode}

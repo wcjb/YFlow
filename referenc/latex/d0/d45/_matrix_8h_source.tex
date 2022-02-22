@@ -1,0 +1,328 @@
+\hypertarget{_matrix_8h_source}{}\doxysection{Matrix.\+h}
+\label{_matrix_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Matrix.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Matrix.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{5 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{6 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_matrix}{Matrix}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} row;   \textcolor{comment}{//张量最低层矩阵的的行}}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} col;   \textcolor{comment}{//张量最底层矩阵的列}}
+\DoxyCodeLine{12     T **num;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} dimension;  \textcolor{comment}{//张量的维数}}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} *shape;     \textcolor{comment}{//张量的维度}}
+\DoxyCodeLine{17     \textcolor{keywordtype}{string} dtype;   \textcolor{comment}{//张量的类型}}
+\DoxyCodeLine{18     \textcolor{comment}{//std::type\_info(int) }}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_matrix}{Matrix}} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} \_row ,\textcolor{keyword}{const} \textcolor{keywordtype}{int} \_col)}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         row = \_row;}
+\DoxyCodeLine{22         col = \_col;}
+\DoxyCodeLine{23         \textcolor{comment}{// 随机数引擎，产生指定范围内的数字}}
+\DoxyCodeLine{24         \textcolor{keyword}{static} std::default\_random\_engine \_rand\_engine((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}) time(NULL));}
+\DoxyCodeLine{25         \textcolor{comment}{// 随机数分布，产生指定范围内符合指定分布的数}}
+\DoxyCodeLine{26         \textcolor{keyword}{static} std::uniform\_real\_distribution<double> \_rand\_init(-\/1.0,1.0);}
+\DoxyCodeLine{27         \textcolor{keywordflow}{if} (row != 0 \&\& col != 0)}
+\DoxyCodeLine{28         \{}
+\DoxyCodeLine{29             num = \textcolor{keyword}{new} T *[row];}
+\DoxyCodeLine{30             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < row; ++i)}
+\DoxyCodeLine{31             \{}
+\DoxyCodeLine{32                 num[i] = \textcolor{keyword}{new} T[col];}
+\DoxyCodeLine{33                 \textcolor{keywordflow}{for} ( \textcolor{keywordtype}{int} j = 0;j < col;++j)}
+\DoxyCodeLine{34                 \{}
+\DoxyCodeLine{35                     num[i][j] = \_rand\_init(\_rand\_engine);}
+\DoxyCodeLine{36                 \}}
+\DoxyCodeLine{37             \}}
+\DoxyCodeLine{38         \}}
+\DoxyCodeLine{39         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{40         \{}
+\DoxyCodeLine{41             num = NULL;}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44     \mbox{\hyperlink{class_matrix}{Matrix}} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} \_row,\textcolor{keyword}{const} \textcolor{keywordtype}{int} \_col,T *array)}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         row = \_row;}
+\DoxyCodeLine{47         col = \_col;}
+\DoxyCodeLine{48         \textcolor{keywordflow}{if} (row != 0 \&\& col != 0)}
+\DoxyCodeLine{49         \{}
+\DoxyCodeLine{50             num = \textcolor{keyword}{new} T *[row];}
+\DoxyCodeLine{51             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0 ;i < row;++i)}
+\DoxyCodeLine{52             \{}
+\DoxyCodeLine{53                 num[i] = \textcolor{keyword}{new} T[col];}
+\DoxyCodeLine{54                 \textcolor{keywordflow}{for} ( \textcolor{keywordtype}{int} j = 0;j < col;++j)}
+\DoxyCodeLine{55                 \{}
+\DoxyCodeLine{56                     num[i][j] = array[i*col+j];}
+\DoxyCodeLine{57                 \}}
+\DoxyCodeLine{58             \}}
+\DoxyCodeLine{59         \}}
+\DoxyCodeLine{60         }
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62     \mbox{\hyperlink{class_matrix}{Matrix}} (\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<T>}} \&\_temp)}
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64         row = \_temp.row;}
+\DoxyCodeLine{65         col = \_temp.col;}
+\DoxyCodeLine{66         \textcolor{keywordflow}{if} (row != 0 \&\& col !=0 )}
+\DoxyCodeLine{67         \{}
+\DoxyCodeLine{68             num  = \textcolor{keyword}{new} T* [row];  \textcolor{comment}{//首先指针指向一个一维数组（数组里面元素为指针）}}
+\DoxyCodeLine{69             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < row;++i)}
+\DoxyCodeLine{70             \{}
+\DoxyCodeLine{71                 num[i] = \textcolor{keyword}{new} T[col]; }
+\DoxyCodeLine{72                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0;j < col;++j)}
+\DoxyCodeLine{73                 \{}
+\DoxyCodeLine{74                     num[i][j] = \_temp.num[i][j];}
+\DoxyCodeLine{75                 \}}
+\DoxyCodeLine{76             \}}
+\DoxyCodeLine{77         \}}
+\DoxyCodeLine{78         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{79         \{}
+\DoxyCodeLine{80             num = NULL;}
+\DoxyCodeLine{81         \}}
+\DoxyCodeLine{82     \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{comment}{/*}}
+\DoxyCodeLine{85 \textcolor{comment}{     析构函数，C++的特殊函数，在每次删除对象时执行，用于跳出程序后，释放所占资源}}
+\DoxyCodeLine{86 \textcolor{comment}{     */}}
+\DoxyCodeLine{87     \mbox{\hyperlink{class_matrix}{\string~Matrix}}()}
+\DoxyCodeLine{88     \{}
+\DoxyCodeLine{89         \textcolor{keywordflow}{if}(num!=NULL)}
+\DoxyCodeLine{90         \{}
+\DoxyCodeLine{91             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<row;++i)}
+\DoxyCodeLine{92             \{}
+\DoxyCodeLine{93                 \textcolor{keyword}{delete}[] num[i];}
+\DoxyCodeLine{94             \}}
+\DoxyCodeLine{95             \textcolor{keyword}{delete} num;}
+\DoxyCodeLine{96         \}}
+\DoxyCodeLine{97     \}}
+\DoxyCodeLine{98     \textcolor{comment}{/*}}
+\DoxyCodeLine{99 \textcolor{comment}{     重载+运算符实现矩阵加法运算}}
+\DoxyCodeLine{100 \textcolor{comment}{     */}}
+\DoxyCodeLine{101     \mbox{\hyperlink{class_matrix}{Matrix}} operator + (\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<T>}} \&B)\textcolor{keyword}{ const}}
+\DoxyCodeLine{102 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{103         \textcolor{keywordflow}{if} (this-\/>col == B.col \&\& this-\/>row == B.row)}
+\DoxyCodeLine{104         \{}
+\DoxyCodeLine{105             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this-\/>row; ++i)}
+\DoxyCodeLine{106             \{}
+\DoxyCodeLine{107                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < this-\/>col; ++j)}
+\DoxyCodeLine{108                 \{}
+\DoxyCodeLine{109                     this-\/>num[i][j] += B.num[i][j];}
+\DoxyCodeLine{110                 \}}
+\DoxyCodeLine{111             \}}
+\DoxyCodeLine{112             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{113         \}}
+\DoxyCodeLine{114         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this-\/>col == B.row \&\& B.col == 1)}
+\DoxyCodeLine{115         \{}
+\DoxyCodeLine{116             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < this-\/>col ;++j)}
+\DoxyCodeLine{117             \{}
+\DoxyCodeLine{118                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this-\/>row ;++i)}
+\DoxyCodeLine{119                 \{}
+\DoxyCodeLine{120                     this-\/>num[i][j] += B.num[j][1];}
+\DoxyCodeLine{121                 \}}
+\DoxyCodeLine{122             \}}
+\DoxyCodeLine{123             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{124         \}}
+\DoxyCodeLine{125         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{126         \{}
+\DoxyCodeLine{127             \mbox{\hyperlink{class_matrix}{Matrix<T>}} NullMatrix(0,0);}
+\DoxyCodeLine{128             std::string WarningInformation=\textcolor{stringliteral}{"{}No matching matrix"{}};}
+\DoxyCodeLine{129             \textcolor{keywordflow}{throw} WarningInformation;}
+\DoxyCodeLine{130             \textcolor{keywordflow}{return} NullMatrix;}
+\DoxyCodeLine{131         \}}
+\DoxyCodeLine{132     \}}
+\DoxyCodeLine{133    }
+\DoxyCodeLine{134     \textcolor{comment}{/*}}
+\DoxyCodeLine{135 \textcolor{comment}{     重载-\/运算符实现矩阵减法运算}}
+\DoxyCodeLine{136 \textcolor{comment}{     */}}
+\DoxyCodeLine{137     \mbox{\hyperlink{class_matrix}{Matrix}} operator -\/ (\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<T>}} \&B)\textcolor{keyword}{ const}}
+\DoxyCodeLine{138 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{139         \textcolor{keywordflow}{if} (this-\/>col == B.col \&\& this-\/>row == B.row)}
+\DoxyCodeLine{140         \{}
+\DoxyCodeLine{141             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < row;++i)}
+\DoxyCodeLine{142             \{}
+\DoxyCodeLine{143                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < col;++j)}
+\DoxyCodeLine{144                 \{}
+\DoxyCodeLine{145                     this-\/>num[i][j] -\/= B.num[i][j];}
+\DoxyCodeLine{146                 \}}
+\DoxyCodeLine{147             \}}
+\DoxyCodeLine{148             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{149         \}}
+\DoxyCodeLine{150         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{151         \{}
+\DoxyCodeLine{152             \mbox{\hyperlink{class_matrix}{Matrix<T>}} NullMatrix(0,0);}
+\DoxyCodeLine{153             std::string WarningInformation=\textcolor{stringliteral}{"{}No matching matrix"{}};}
+\DoxyCodeLine{154             \textcolor{keywordflow}{throw} WarningInformation;}
+\DoxyCodeLine{155             \textcolor{keywordflow}{return} NullMatrix;}
+\DoxyCodeLine{156         \}}
+\DoxyCodeLine{157     \}}
+\DoxyCodeLine{158     }
+\DoxyCodeLine{159     \textcolor{comment}{/*}}
+\DoxyCodeLine{160 \textcolor{comment}{     重载*实现矩阵的乘法运算}}
+\DoxyCodeLine{161 \textcolor{comment}{     */}}
+\DoxyCodeLine{162     \mbox{\hyperlink{class_matrix}{Matrix}} operator * (\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<T>}} \&B)\textcolor{keyword}{ const}}
+\DoxyCodeLine{163 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{164         \textcolor{keywordflow}{if} (this-\/>row == 0 || this-\/>col == 0 || B.row == 0 ||B.col == 0)}
+\DoxyCodeLine{165         \{}
+\DoxyCodeLine{166             \mbox{\hyperlink{class_matrix}{Matrix<T>}} NullMatrix(0,0);}
+\DoxyCodeLine{167             std::string WarningInformation=\textcolor{stringliteral}{"{}No matching matrix"{}};}
+\DoxyCodeLine{168             \textcolor{keywordflow}{throw} WarningInformation;}
+\DoxyCodeLine{169             \textcolor{keywordflow}{return} NullMatrix;}
+\DoxyCodeLine{170         \}}
+\DoxyCodeLine{171         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this-\/>col != B.row)}
+\DoxyCodeLine{172         \{}
+\DoxyCodeLine{173             \mbox{\hyperlink{class_matrix}{Matrix<T>}} NullMatrix(0,0);}
+\DoxyCodeLine{174             std::string WarningInformation=\textcolor{stringliteral}{"{}No matching matrix"{}};}
+\DoxyCodeLine{175             \textcolor{keywordflow}{throw} WarningInformation;}
+\DoxyCodeLine{176             \textcolor{keywordflow}{return} NullMatrix;}
+\DoxyCodeLine{177         \}}
+\DoxyCodeLine{178         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{179         \{}
+\DoxyCodeLine{180             \mbox{\hyperlink{class_matrix}{Matrix<T>}} Temp(this-\/>row,B.col);}
+\DoxyCodeLine{181             T thans;}
+\DoxyCodeLine{182             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < Temp.row;++i)}
+\DoxyCodeLine{183             \{}
+\DoxyCodeLine{184                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < Temp.col;++j)}
+\DoxyCodeLine{185                 \{   thans = 0;}
+\DoxyCodeLine{186                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0;k < this-\/>col;++k)}
+\DoxyCodeLine{187                     \{}
+\DoxyCodeLine{188                         thans += this-\/>num[i][k]*B.num[k][j];}
+\DoxyCodeLine{189                     \}}
+\DoxyCodeLine{190                     Temp.num[i][j] = thans;}
+\DoxyCodeLine{191                 \}}
+\DoxyCodeLine{192             \}}
+\DoxyCodeLine{193             \textcolor{keywordflow}{return} Temp;}
+\DoxyCodeLine{194         \}}
+\DoxyCodeLine{195     \}}
+\DoxyCodeLine{196     }
+\DoxyCodeLine{197     \textcolor{comment}{/*}}
+\DoxyCodeLine{198 \textcolor{comment}{     重载=运算符,实现矩阵赋值运算如果operator=是void类型，那么这个运算符是不能完成这个语句的:a=b=c;}}
+\DoxyCodeLine{199 \textcolor{comment}{     所以使用Matrix \&，因为使用引用一方面可以使得上面这个语句行得通，而且效率也比较高。}}
+\DoxyCodeLine{200 \textcolor{comment}{     */}}
+\DoxyCodeLine{201     \mbox{\hyperlink{class_matrix}{Matrix}} \&operator = (\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<T>}} \&B)}
+\DoxyCodeLine{202     \{}
+\DoxyCodeLine{203         \textcolor{comment}{//在进行复制前，保证左边的矩阵是没有指向内存空间的}}
+\DoxyCodeLine{204         \textcolor{keywordflow}{if} (num == NULL)}
+\DoxyCodeLine{205         \{}
+\DoxyCodeLine{206             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < row;++i)}
+\DoxyCodeLine{207             \{}
+\DoxyCodeLine{208                 \textcolor{keyword}{delete}[] num[i];}
+\DoxyCodeLine{209             \}}
+\DoxyCodeLine{210             \textcolor{keyword}{delete} num;}
+\DoxyCodeLine{211         \}}
+\DoxyCodeLine{212         row = B.row;}
+\DoxyCodeLine{213         col = B.col;}
+\DoxyCodeLine{214         \textcolor{keywordflow}{if} (row != 0 \&\& col != 0)}
+\DoxyCodeLine{215         \{}
+\DoxyCodeLine{216             num = \textcolor{keyword}{new} T *[row];}
+\DoxyCodeLine{217             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0;i < row;++i)}
+\DoxyCodeLine{218             \{}
+\DoxyCodeLine{219                 num[i] = \textcolor{keyword}{new} T[col];}
+\DoxyCodeLine{220             \}}
+\DoxyCodeLine{221                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < row;++i)}
+\DoxyCodeLine{222                 \{}
+\DoxyCodeLine{223                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < col;++j)}
+\DoxyCodeLine{224                     \{}
+\DoxyCodeLine{225                         num[i][j] = B.num[i][j];}
+\DoxyCodeLine{226                     \}}
+\DoxyCodeLine{227                 \}}
+\DoxyCodeLine{228         \}}
+\DoxyCodeLine{229         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{230         \{}
+\DoxyCodeLine{231             row = 0;}
+\DoxyCodeLine{232             col = 0;}
+\DoxyCodeLine{233             num = NULL;}
+\DoxyCodeLine{234         \}}
+\DoxyCodeLine{235         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{236     \}}
+\DoxyCodeLine{237     \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{238     \textcolor{keyword}{friend} std::ostream \&operator<<(std::ostream \&strm,\mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B);}
+\DoxyCodeLine{239     \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{240     \textcolor{keyword}{friend} std::istream \&operator>>(std::istream \&strm,\mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B);}
+\DoxyCodeLine{241     \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{242     \textcolor{comment}{// 友元函数实现矩阵的Hadamard}}
+\DoxyCodeLine{243     \textcolor{keyword}{friend} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} Hadamard(\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&A,\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B);}
+\DoxyCodeLine{244     \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{245     \textcolor{comment}{// 使用友元函数实现矩阵转置}}
+\DoxyCodeLine{246     \textcolor{keyword}{friend} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} Transpose(\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B);}
+\DoxyCodeLine{247     }
+\DoxyCodeLine{248     \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{249     \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} Zeros(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \_row,\textcolor{keyword}{const} \textcolor{keywordtype}{int} \_col)}
+\DoxyCodeLine{250     \{}
+\DoxyCodeLine{251         \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} temp(\_row,\_col);}
+\DoxyCodeLine{252         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<\_row;++i)}
+\DoxyCodeLine{253             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<\_col;++j)}
+\DoxyCodeLine{254                 temp.num[j][i] = 0;}
+\DoxyCodeLine{255         \textcolor{keywordflow}{return} temp;}
+\DoxyCodeLine{256     \}}
+\DoxyCodeLine{257 \};}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259 \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{260 std::ostream \&operator<<(std::ostream \&strm,\mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B)}
+\DoxyCodeLine{261 \{}
+\DoxyCodeLine{262     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<B.row;++i)}
+\DoxyCodeLine{263     \{}
+\DoxyCodeLine{264         strm<<\textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{265         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<B.col;++j)}
+\DoxyCodeLine{266         \{}
+\DoxyCodeLine{267             \textcolor{keywordflow}{if}(j==B.col-\/1)}
+\DoxyCodeLine{268                 strm<<B.num[i][j];}
+\DoxyCodeLine{269             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{270                 strm<<B.num[i][j]<<\textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{271         \}}
+\DoxyCodeLine{272         strm<<\textcolor{stringliteral}{"{}]"{}}<<std::endl;}
+\DoxyCodeLine{273     \}}
+\DoxyCodeLine{274     \textcolor{keywordflow}{return} strm;}
+\DoxyCodeLine{275 \}}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{277 \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{278 std::istream \&operator>>(std::istream \&strm,\mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B)}
+\DoxyCodeLine{279 \{}
+\DoxyCodeLine{280     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<B.row;++i)}
+\DoxyCodeLine{281         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<B.col;++j)}
+\DoxyCodeLine{282             strm>>B.num[i][j];}
+\DoxyCodeLine{283     \textcolor{keywordflow}{return} strm;}
+\DoxyCodeLine{284 \}}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286 \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{287 \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} Hadamard(\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&A,\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B)}
+\DoxyCodeLine{288 \{}
+\DoxyCodeLine{289     \textcolor{keywordflow}{if}(A.row==0||A.col==0||B.row==0||B.col==0)}
+\DoxyCodeLine{290     \{}
+\DoxyCodeLine{291         \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} NullMatrix(0,0);}
+\DoxyCodeLine{292         std::string WarningInformation=\textcolor{stringliteral}{"{}No matching matrix"{}};}
+\DoxyCodeLine{293         \textcolor{keywordflow}{throw} WarningInformation;}
+\DoxyCodeLine{294         \textcolor{keywordflow}{return} NullMatrix;}
+\DoxyCodeLine{295     \}}
+\DoxyCodeLine{296     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(A.row!=B.row||A.col!=B.col)}
+\DoxyCodeLine{297     \{}
+\DoxyCodeLine{298         \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} NullMatrix(0,0);}
+\DoxyCodeLine{299         std::string WarningInformation=\textcolor{stringliteral}{"{}No matching matrix"{}};}
+\DoxyCodeLine{300         \textcolor{keywordflow}{throw} WarningInformation;}
+\DoxyCodeLine{301         \textcolor{keywordflow}{return} NullMatrix;}
+\DoxyCodeLine{302     \}}
+\DoxyCodeLine{303     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{304     \{}
+\DoxyCodeLine{305         \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} Temp(A.row,A.col);}
+\DoxyCodeLine{306         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<A.row;++i)}
+\DoxyCodeLine{307             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<A.col;++j)}
+\DoxyCodeLine{308                 Temp.num[i][j]=A.num[i][j]*B.num[i][j];}
+\DoxyCodeLine{309                 }
+\DoxyCodeLine{310         \textcolor{keywordflow}{return} Temp;}
+\DoxyCodeLine{311     \}}
+\DoxyCodeLine{312 \}}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{314 \textcolor{keyword}{template}<\textcolor{keyword}{typename} \_T>}
+\DoxyCodeLine{315 \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} Transpose(\textcolor{keyword}{const} \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} \&B)}
+\DoxyCodeLine{316 \{}
+\DoxyCodeLine{317     \mbox{\hyperlink{class_matrix}{Matrix<\_T>}} temp(B.col,B.row);}
+\DoxyCodeLine{318     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<B.row;++i)}
+\DoxyCodeLine{319         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<B.col;++j)}
+\DoxyCodeLine{320             temp.num[j][i] = B.num[i][j];}
+\DoxyCodeLine{321     \textcolor{keywordflow}{return} temp;}
+\DoxyCodeLine{322 \}}
+
+\end{DoxyCode}

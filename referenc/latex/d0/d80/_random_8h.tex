@@ -1,0 +1,132 @@
+\hypertarget{_random_8h}{}\doxysection{C\+:/\+Users/wcjb/\+Documents/\+Code\+Space/\+YFlow/source/\+Random.h 文件参考}
+\label{_random_8h}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.h}}
+
+
+随机数生成器实现  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tools.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}keys.\+h\char`\"{}}\newline
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{_random_8h_ac84b4255e0ba780b3a51f82fd0fd08cb}{\+\_\+seed\+\_\+}} (int \+\_\+seed)
+\begin{DoxyCompactList}\small\item\em 2$^\wedge$31 \end{DoxyCompactList}\item 
+unsigned long int \mbox{\hyperlink{_random_8h_abe9efa7bb4f1c11ce23e0314ef942913}{\+\_\+\+Middle\+Square\+\_\+}} (int seed)
+\begin{DoxyCompactList}\small\item\em 冯·诺依曼平方取中法用于生成符合均匀分布的随机序列,不建议使用 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_random_8h_a4f19a70a6f2964b5a9c9d20d6195595c}\label{_random_8h_a4f19a70a6f2964b5a9c9d20d6195595c}} 
+void {\bfseries MT19937} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_random_8h_a1b7a15f3f7fac6c88c97c8505c0fb556}\label{_random_8h_a1b7a15f3f7fac6c88c97c8505c0fb556}} 
+const double {\bfseries \+\_\+\+\_\+\+TWO32\+\_\+\+\_\+} = 4294967296.\+0
+\item 
+\mbox{\Hypertarget{_random_8h_a9d85b120a9ca8ac4615ceb90d3361abf}\label{_random_8h_a9d85b120a9ca8ac4615ceb90d3361abf}} 
+const unsigned long int {\bfseries \+\_\+\+\_\+\+TWO31\+\_\+\+\_\+} = 2147483647
+\begin{DoxyCompactList}\small\item\em 2$^\wedge$32 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+随机数生成器实现 
+
+\begin{DoxyAuthor}{作者}
+殉道者 (\href{mailto:wcjbyjx@gmail.com}{\texttt{ wcjbyjx@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2021-\/01-\/26 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright © 2014-\/2021 weichijunbo.
+\end{DoxyCopyright}
+随机数生成器的实现，实现了绝大部分的随机数生成算法包括冯·诺伊曼平方取中法及其改良算法、 线性同余发生器、梅森旋转演算法，\+FSR发生器、组合发生器（因为效率原因，未作实现）。由于需要生成符合常见分布的随机数， 故采用随机数生成算法生成符合均匀分布(即一个周期内所有数据出现是等概率)的随机数，再利用均匀分布的随机数生成符合其它分布的随 机数。 \begin{DoxySeeAlso}{参见}
+\href{https://www.nkdacs.com/share/Random\%20number/Random\%20number/\#6}{\texttt{ 随机数的前世今生}} 
+
+\href{https://cosx.org/2015/06/generating-normal-distr-variates}{\texttt{ 漫谈正态分布的生成}} \DoxyHorRuler{0}
+ 
+\end{DoxySeeAlso}
+\begin{DoxyParagraph}{Change\+Log\+:}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Date }&\cellcolor{\tableheadbgcolor}\textbf{ Version }&\cellcolor{\tableheadbgcolor}\textbf{ Author }&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Date }&\cellcolor{\tableheadbgcolor}\textbf{ Version }&\cellcolor{\tableheadbgcolor}\textbf{ Author }&\cellcolor{\tableheadbgcolor}\textbf{ Description }\\\cline{1-4}
+\endhead
+2021-\/01-\/26 &0.\+0.\+1 &殉道者 &内容 \\\cline{1-4}
+\end{longtabu}
+\DoxyHorRuler{0}
+ 
+\end{DoxyParagraph}
+
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{_random_8h_abe9efa7bb4f1c11ce23e0314ef942913}\label{_random_8h_abe9efa7bb4f1c11ce23e0314ef942913}} 
+\index{Random.h@{Random.h}!\_MiddleSquare\_@{\_MiddleSquare\_}}
+\index{\_MiddleSquare\_@{\_MiddleSquare\_}!Random.h@{Random.h}}
+\doxysubsubsection{\texorpdfstring{\_MiddleSquare\_()}{\_MiddleSquare\_()}}
+{\footnotesize\ttfamily unsigned long int \+\_\+\+Middle\+Square\+\_\+ (\begin{DoxyParamCaption}\item[{int}]{seed }\end{DoxyParamCaption})}
+
+
+
+冯·诺依曼平方取中法用于生成符合均匀分布的随机序列,不建议使用 
+
+基本思想为：将数列中的第a(i)项（假设其有 m 位）平方， 取得到的2m位数（若不足 2m 位，在最高位前补 0）中间部分的m位数字 10$^\wedge$\{\mbox{[}m/2\mbox{]}+1\})至10$^\wedge$\{\mbox{[}m/2\mbox{]}+m\}的数作为a(i)的下一项 a(i+1)，由此产 生一个伪随机数数列。 \hypertarget{tools_8h_算法描述}{}\doxysubsection{算法描述}\label{tools_8h_算法描述}
+
+\begin{DoxyEnumerate}
+\item 选择一个m位数\+N(i)作为种子；
+\item 计算\+N(i)的平方 
+\end{DoxyEnumerate}函数返回从1970年1月1日到当前时间系统所经历的秒数
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{}
+\DoxyCodeLine{errno\_t localtime\_s(}
+\DoxyCodeLine{                     \textcolor{keyword}{struct} tm* \_tm,           }
+\DoxyCodeLine{                     \textcolor{keyword}{const} time\_t *time        }
+\DoxyCodeLine{ );}
+
+\end{DoxyCode}
+
+
+Defined in header \texorpdfstring{$<$}{<}time.\+h\texorpdfstring{$>$}{>} struct tm $\ast$localtime ( const time\+\_\+t $\ast$timer ); (1) struct tm $\ast$localtime\+\_\+r( const time\+\_\+t $\ast$timer, struct tm $\ast$buf ); (2) (since C23) struct tm $\ast$localtime\+\_\+s( const time\+\_\+t $\ast$restrict timer, struct tm $\ast$restrict buf ); (3) (since C11) 1) Converts given time since epoch (a time\+\_\+t value pointed to by timer) into calendar time, expressed in local time, in the struct tm format. The result is stored in static storage and a pointer to that static storage is returned. 2) Same as (1), except that the function uses user-\/provided storage buf for the result. 3) Same as (1), except that the function uses user-\/provided storage buf for the result and that the following errors are detected at runtime and call the currently installed constraint handler function\+: timer or buf is a null pointer As with all bounds-\/checked functions, localtime\+\_\+s is only guaranteed to be available if {\bfseries{STDC\+\_\+\+LIB\+\_\+\+EXT1}} is defined by the implementation and if the user defines {\bfseries{STDC\+\_\+\+WANT\+\_\+\+LIB\+\_\+\+EXT1}} to the integer constant 1 before including time.\+h. 通过预编译宏来判断当前系统：https\+://www.jianshu.\+com/p/c92e8b81ad04\mbox{\Hypertarget{_random_8h_ac84b4255e0ba780b3a51f82fd0fd08cb}\label{_random_8h_ac84b4255e0ba780b3a51f82fd0fd08cb}} 
+\index{Random.h@{Random.h}!\_seed\_@{\_seed\_}}
+\index{\_seed\_@{\_seed\_}!Random.h@{Random.h}}
+\doxysubsubsection{\texorpdfstring{\_seed\_()}{\_seed\_()}}
+{\footnotesize\ttfamily unsigned long \+\_\+seed\+\_\+ (\begin{DoxyParamCaption}\item[{int}]{\+\_\+seed }\end{DoxyParamCaption})}
+
+
+
+2$^\wedge$31 
+
+根据系统时间获取随机数种子，作为随机数生成算法中的初值 
+\begin{DoxyParams}{参数}
+{\em \+\_\+seed} & 初始化随机数种子，0表示使用时间种子，其余整数则直接使用314159+\+\_\+seed作为随机数种子 \\
+\hline
+\end{DoxyParams}
+函数返回从1970年1月1日到当前时间系统所经历的秒数
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{}
+\DoxyCodeLine{errno\_t localtime\_s(}
+\DoxyCodeLine{                     \textcolor{keyword}{struct} tm* \_tm,           }
+\DoxyCodeLine{                     \textcolor{keyword}{const} time\_t *time        }
+\DoxyCodeLine{ );}
+
+\end{DoxyCode}
+
+
+Defined in header \texorpdfstring{$<$}{<}time.\+h\texorpdfstring{$>$}{>} struct tm $\ast$localtime ( const time\+\_\+t $\ast$timer ); (1) struct tm $\ast$localtime\+\_\+r( const time\+\_\+t $\ast$timer, struct tm $\ast$buf ); (2) (since C23) struct tm $\ast$localtime\+\_\+s( const time\+\_\+t $\ast$restrict timer, struct tm $\ast$restrict buf ); (3) (since C11) 1) Converts given time since epoch (a time\+\_\+t value pointed to by timer) into calendar time, expressed in local time, in the struct tm format. The result is stored in static storage and a pointer to that static storage is returned. 2) Same as (1), except that the function uses user-\/provided storage buf for the result. 3) Same as (1), except that the function uses user-\/provided storage buf for the result and that the following errors are detected at runtime and call the currently installed constraint handler function\+: timer or buf is a null pointer As with all bounds-\/checked functions, localtime\+\_\+s is only guaranteed to be available if {\bfseries{STDC\+\_\+\+LIB\+\_\+\+EXT1}} is defined by the implementation and if the user defines {\bfseries{STDC\+\_\+\+WANT\+\_\+\+LIB\+\_\+\+EXT1}} to the integer constant 1 before including time.\+h. 通过预编译宏来判断当前系统：https\+://www.jianshu.\+com/p/c92e8b81ad04
+
+由系统时间生成的随机数种子为9位整数 平方后已超过了long类型数字上限，故取其后四位作为随机数种子

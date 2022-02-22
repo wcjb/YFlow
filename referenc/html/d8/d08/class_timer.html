@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YFlow: Timer类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YFlow
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="../../d7/d7d/class_timer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Timer类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>基于STL的chrono实现计时器，计算函数，代码段执行时间  
+ <a href="../../d8/d08/class_timer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/d66/ytime_8h_source.html">ytime</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a5f16e8da27d2a5a5242dead46de05d97"><td class="memItemLeft" align="right" valign="top"><a id="a5f16e8da27d2a5a5242dead46de05d97" name="a5f16e8da27d2a5a5242dead46de05d97"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Timer</b> ()</td></tr>
+<tr class="memdesc:a5f16e8da27d2a5a5242dead46de05d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">记录构造函数被调用时的时间 <br /></td></tr>
+<tr class="separator:a5f16e8da27d2a5a5242dead46de05d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14fa469c4c295c5fa6e66a4ad1092146"><td class="memItemLeft" align="right" valign="top"><a id="a14fa469c4c295c5fa6e66a4ad1092146" name="a14fa469c4c295c5fa6e66a4ad1092146"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Timer</b> ()</td></tr>
+<tr class="memdesc:a14fa469c4c295c5fa6e66a4ad1092146"><td class="mdescLeft">&#160;</td><td class="mdescRight">调用析构函数时，获取当前时间，并计算对象从被构造到析构所经过时间（毫秒） <br /></td></tr>
+<tr class="separator:a14fa469c4c295c5fa6e66a4ad1092146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >基于STL的chrono实现计时器，计算函数，代码段执行时间 </p>
+<p >] </p><dl class="section author"><dt>作者</dt><dd>殉道者 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>基于STL的chrono实现计时器，计算函数，代码段执行时间。创建Timer对象时为起始时间，Timer对象析构时 获取当前时间并计算时间差，即可获得执行时间。结合大括号{}和类的生命周期来使用，可以很方便的计算函数、代码段的执行时间。 目前只实现了毫秒级别精度的计算器，足够开发使用。 </dd></dl>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li>C:/Users/wcjb/Documents/CodeSpace/YFlow/source/<a class="el" href="../../d8/d66/ytime_8h_source.html">ytime.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

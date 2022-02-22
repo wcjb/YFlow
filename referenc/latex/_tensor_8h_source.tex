@@ -3,80 +3,137 @@
 \mbox{\hyperlink{_tensor_8h}{浏览该文件的文档.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{64 \textcolor{preprocessor}{\#pragma once}}
-\DoxyCodeLine{65 \textcolor{preprocessor}{\#include <iostream>}}
-\DoxyCodeLine{66 \textcolor{preprocessor}{\#include <random>}}
-\DoxyCodeLine{67 \textcolor{preprocessor}{\#include "{}Matrix.h"{}}}
-\DoxyCodeLine{68 \textcolor{keyword}{using namespace }std;}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> }
-\DoxyCodeLine{71 \textcolor{keyword}{class }\mbox{\hyperlink{class_tensor}{Tensor}}}
-\DoxyCodeLine{72 \{}
-\DoxyCodeLine{73 \textcolor{keyword}{private}:}
-\DoxyCodeLine{77     \textcolor{keyword}{struct }matrix}
-\DoxyCodeLine{78     \{}
-\DoxyCodeLine{79         \textcolor{keywordtype}{int} rows;   }
-\DoxyCodeLine{80         \textcolor{keywordtype}{int} cols;   }
-\DoxyCodeLine{81         T **numpy;    }
-\DoxyCodeLine{82     \};}
-\DoxyCodeLine{86     \textcolor{keyword}{struct }vector}
-\DoxyCodeLine{87     \{}
-\DoxyCodeLine{88         \textcolor{keywordtype}{int} number;  }
-\DoxyCodeLine{89         T *numpy;    }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Matrix.h"{}}}
+\DoxyCodeLine{18 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{/* *}}
+\DoxyCodeLine{21 \textcolor{comment}{ * @class  <Tensor> [Tensor.h] [<Tensor>] }}
+\DoxyCodeLine{22 \textcolor{comment}{ * \&emsp;\&emsp;实现张量数据结构，用于搭建神经网络，本质是多维矩阵。需要注意的是，当进行2维以上张量的运算时，两个张量之间的}}
+\DoxyCodeLine{23 \textcolor{comment}{ * 加减和二维矩阵类似。而两个高维张量的乘法可参考Tensorflow中matmul的源码说明来看，如果张量的dimention大于2，}}
+\DoxyCodeLine{24 \textcolor{comment}{ * 实际上进行的会是batch\_mat\_mul,此时进行叉乘的是batch中的每一个切片（slice），即高维张量的运算实质还是2维张}}
+\DoxyCodeLine{25 \textcolor{comment}{ * 量的运算，只不过是在更高维度的切片下，如下所示：}}
+\DoxyCodeLine{26 \textcolor{comment}{ *                  output[..., :, :] = matrix(x[..., :, :]) * matrix(y[..., :, :])}}
+\DoxyCodeLine{27 \textcolor{comment}{ * 使用tensorflow验证如下:}}
+\DoxyCodeLine{28 \textcolor{comment}{ * @code}}
+\DoxyCodeLine{29 \textcolor{comment}{ *}}
+\DoxyCodeLine{30 \textcolor{comment}{ *  In [2]: a}}
+\DoxyCodeLine{31 \textcolor{comment}{ *  Out[2]: }}
+\DoxyCodeLine{32 \textcolor{comment}{ *   <tf.Tensor: shape=(2, 3, 2), dtype=int32, numpy=}}
+\DoxyCodeLine{33 \textcolor{comment}{ *  array([[[1, 1],}}
+\DoxyCodeLine{34 \textcolor{comment}{ *           [2, 2],}}
+\DoxyCodeLine{35 \textcolor{comment}{ *           [3, 3]],}}
+\DoxyCodeLine{36 \textcolor{comment}{ *}}
+\DoxyCodeLine{37 \textcolor{comment}{ *       [[4, 4],}}
+\DoxyCodeLine{38 \textcolor{comment}{ *           [5, 5],}}
+\DoxyCodeLine{39 \textcolor{comment}{ *           [6, 6]]])>}}
+\DoxyCodeLine{40 \textcolor{comment}{ *}}
+\DoxyCodeLine{41 \textcolor{comment}{ *  In [3]: c = tf.reshape(a,(2,2,3))}}
+\DoxyCodeLine{42 \textcolor{comment}{ *}}
+\DoxyCodeLine{43 \textcolor{comment}{ *  In [4]: c}}
+\DoxyCodeLine{44 \textcolor{comment}{ *  Out[4]: }}
+\DoxyCodeLine{45 \textcolor{comment}{ *   <tf.Tensor: shape=(2, 2, 3), dtype=int32, numpy=}}
+\DoxyCodeLine{46 \textcolor{comment}{ *   array([[[1, 1, 2],}}
+\DoxyCodeLine{47 \textcolor{comment}{ *           [2, 3, 3]],}}
+\DoxyCodeLine{48 \textcolor{comment}{ *}}
+\DoxyCodeLine{49 \textcolor{comment}{ *       [[4, 4, 5],}}
+\DoxyCodeLine{50 \textcolor{comment}{ *           [5, 6, 6]]])>}}
+\DoxyCodeLine{51 \textcolor{comment}{ *}}
+\DoxyCodeLine{52 \textcolor{comment}{ *   In [5]: tf.matmul(a,c)}}
+\DoxyCodeLine{53 \textcolor{comment}{ *   Out[5]: }}
+\DoxyCodeLine{54 \textcolor{comment}{ *   <tf.Tensor: shape=(2, 3, 3), dtype=int32, numpy=}}
+\DoxyCodeLine{55 \textcolor{comment}{ *   array([[[ 3,  4,  5],}}
+\DoxyCodeLine{56 \textcolor{comment}{ *           [ 6,  8, 10],}}
+\DoxyCodeLine{57 \textcolor{comment}{ *           [ 9, 12, 15]],}}
+\DoxyCodeLine{58 \textcolor{comment}{ *}}
+\DoxyCodeLine{59 \textcolor{comment}{ *       [[36, 40, 44],}}
+\DoxyCodeLine{60 \textcolor{comment}{ *         [45, 50, 55],}}
+\DoxyCodeLine{61 \textcolor{comment}{ *            [54, 60, 66]]])> }}
+\DoxyCodeLine{62 \textcolor{comment}{ * @endcode}}
+\DoxyCodeLine{63 \textcolor{comment}{ * 则要求高维张量相乘符合如下规则：}}
+\DoxyCodeLine{64 \textcolor{comment}{ * -\/\# 两个张量能相乘，则二者除了最后两个维度可以不相等外，其它维度必须相等；}}
+\DoxyCodeLine{65 \textcolor{comment}{ * -\/\# 两个张量能相乘，则二者的最后两个维度必须满足二维矩阵相乘的条件；}}
+\DoxyCodeLine{66 \textcolor{comment}{ * }}
+\DoxyCodeLine{67 \textcolor{comment}{ * @attention}}
+\DoxyCodeLine{68 \textcolor{comment}{ *  另外，因为张量乘法本质上为矩阵乘法，由于在神经网络中设计到大量的巨型矩阵的乘法，所以很有必要}}
+\DoxyCodeLine{69 \textcolor{comment}{ *优化矩阵乘法的计算逻辑，本实现使用通用矩阵乘（GEMM，General Matrix Multiplication）优化矩阵}}
+\DoxyCodeLine{70 \textcolor{comment}{ *乘法。可参考下文:}}
+\DoxyCodeLine{71 \textcolor{comment}{ [通用矩阵乘（GEMM）优化算法](https://jackwish.net/2019/gemm-\/optimization.html)}}
+\DoxyCodeLine{72 \textcolor{comment}{ [通用矩阵乘（GEMM）优化与卷积计算](https://zhuanlan.zhihu.com/p/66958390)}}
+\DoxyCodeLine{73 \textcolor{comment}{ *常规的矩阵乘法计算算法的时间复杂度为O(n\string^3) = O(n\string^(log2(8)))}}
+\DoxyCodeLine{74 \textcolor{comment}{ * -\/\# 分块矩阵计算}}
+\DoxyCodeLine{75 \textcolor{comment}{ * -\/\# Strassen 算法，时间复杂度是O(n\string^2.807) = O(n\string^(log2(7)))}}
+\DoxyCodeLine{76 \textcolor{comment}{ * -\/\# Coppersmith-\/Winograd算法，时间复杂度是O（n\string^2.38) }}
+\DoxyCodeLine{77 \textcolor{comment}{ * */}}
+\DoxyCodeLine{78 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> }
+\DoxyCodeLine{79 \textcolor{keyword}{class }\mbox{\hyperlink{class_tensor}{Tensor}}}
+\DoxyCodeLine{80 \{}
+\DoxyCodeLine{81 \textcolor{keyword}{private}:}
+\DoxyCodeLine{85     \textcolor{keyword}{struct }matrix}
+\DoxyCodeLine{86     \{}
+\DoxyCodeLine{87         \textcolor{keywordtype}{int} rows;   }
+\DoxyCodeLine{88         \textcolor{keywordtype}{int} cols;   }
+\DoxyCodeLine{89         T **numpy;    }
 \DoxyCodeLine{90     \};}
-\DoxyCodeLine{92     T constant;}
-\DoxyCodeLine{93 }
-\DoxyCodeLine{94 \textcolor{keyword}{public}:}
-\DoxyCodeLine{95     \textcolor{keywordtype}{int} Dimension;}
-\DoxyCodeLine{96     \textcolor{keywordtype}{int} *Shape;   }
-\DoxyCodeLine{97     \textcolor{keywordtype}{string} dtype;  }
-\DoxyCodeLine{98     \textcolor{comment}{//std::type\_info(int)}}
-\DoxyCodeLine{104 \textcolor{comment}{}    \mbox{\hyperlink{class_tensor_a41003ef726406f19a946bf8ad8f5067e}{Tensor}} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} demension,\textcolor{keyword}{const} \textcolor{keywordtype}{int} *shape) : Dimension(demension),Shape(shape)}
-\DoxyCodeLine{105     \{}
-\DoxyCodeLine{106 }
-\DoxyCodeLine{107         matrix mat;}
-\DoxyCodeLine{108         mat.rows = *(shape+demension-\/1);}
-\DoxyCodeLine{109         mat.cols = *(shape+demension-\/2);}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{111         \textcolor{keywordflow}{switch} (demension)}
-\DoxyCodeLine{112         \{}
-\DoxyCodeLine{114         \textcolor{keywordflow}{case} 3 :}
-\DoxyCodeLine{115             \textcolor{comment}{//三维张量第一维的值}}
-\DoxyCodeLine{116             \textcolor{keywordtype}{int} size = shape[0];   }
-\DoxyCodeLine{117             \textcolor{comment}{//初始化matrix结构体的二级指针成员numpy，即分配内存空间}}
-\DoxyCodeLine{118             mat.numpy = \textcolor{keyword}{new} T* [size];}
-\DoxyCodeLine{119             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < size;j++)}
-\DoxyCodeLine{120             \{}
-\DoxyCodeLine{121                 mat.numpy[j] = \textcolor{keyword}{new} T* [mat.rows * mat.cols];}
-\DoxyCodeLine{122             \}}
-\DoxyCodeLine{123 }
-\DoxyCodeLine{124             \textcolor{keywordflow}{if} (size!=0 \&\& mat.rows!=0 \&\& mat.cols!=0)}
-\DoxyCodeLine{125             \{}
-\DoxyCodeLine{126 \textcolor{preprocessor}{                \#pragma omp parallel for}}
-\DoxyCodeLine{127                 \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} s = 0;s < size;s++)}
-\DoxyCodeLine{128                 \{}
-\DoxyCodeLine{129                     \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} r = 0;r < mat.rows;r++)}
-\DoxyCodeLine{130                     \{}
-\DoxyCodeLine{131                         \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} c = 0;c < mat.cols;c++)}
-\DoxyCodeLine{132                         \{}
-\DoxyCodeLine{133                             mat.numpy[s][c+r*c] = 1;}
-\DoxyCodeLine{134                         \}}
-\DoxyCodeLine{135                     \}}
-\DoxyCodeLine{136                 \}}
-\DoxyCodeLine{137             \}}
-\DoxyCodeLine{138             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{140         \textcolor{keywordflow}{case} 2 :}
-\DoxyCodeLine{141             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{142         }
-\DoxyCodeLine{143         \textcolor{comment}{//一维张量即矢量}}
-\DoxyCodeLine{144         \textcolor{keywordflow}{case} 1 :}
-\DoxyCodeLine{145             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{146 }
-\DoxyCodeLine{147         \textcolor{comment}{//零维张量即标量}}
-\DoxyCodeLine{148         \textcolor{keywordflow}{case} 0 :}
+\DoxyCodeLine{94     \textcolor{keyword}{struct }vector}
+\DoxyCodeLine{95     \{}
+\DoxyCodeLine{96         \textcolor{keywordtype}{int} number;  }
+\DoxyCodeLine{97         T *numpy;    }
+\DoxyCodeLine{98     \};}
+\DoxyCodeLine{100     T constant;}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{keyword}{public}:}
+\DoxyCodeLine{103     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_tensor_a31ba0b313c05c9ac43fca7338dabd297}{Dimension}};       }
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} *\mbox{\hyperlink{class_tensor_ae4dcf8ddaaa06f57f8828a6f3353d484}{Shape}};          }
+\DoxyCodeLine{105     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_tensor_a226ad90d0fe2299a64dbfc6dde1d1f31}{dtype}};        }
+\DoxyCodeLine{112     \mbox{\hyperlink{class_tensor_a41003ef726406f19a946bf8ad8f5067e}{Tensor}} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} demension,\textcolor{keyword}{const} \textcolor{keywordtype}{int} *shape) : \mbox{\hyperlink{class_tensor_a31ba0b313c05c9ac43fca7338dabd297}{Dimension}}(demension),\mbox{\hyperlink{class_tensor_ae4dcf8ddaaa06f57f8828a6f3353d484}{Shape}}(shape)}
+\DoxyCodeLine{113     \{}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115         matrix mat;}
+\DoxyCodeLine{116         mat.rows = *(shape+demension-\/1);}
+\DoxyCodeLine{117         mat.cols = *(shape+demension-\/2);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119         \textcolor{keywordflow}{switch} (demension)}
+\DoxyCodeLine{120         \{}
+\DoxyCodeLine{122         \textcolor{keywordflow}{case} 3 :}
+\DoxyCodeLine{123             \textcolor{comment}{//三维张量第一维的值}}
+\DoxyCodeLine{124             \textcolor{keywordtype}{int} size = shape[0];   }
+\DoxyCodeLine{125             \textcolor{comment}{//初始化matrix结构体的二级指针成员numpy，即分配内存空间}}
+\DoxyCodeLine{126             mat.numpy = \textcolor{keyword}{new} T* [size];}
+\DoxyCodeLine{127             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < size;j++)}
+\DoxyCodeLine{128             \{}
+\DoxyCodeLine{129                 mat.numpy[j] = \textcolor{keyword}{new} T* [mat.rows * mat.cols];}
+\DoxyCodeLine{130             \}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132             \textcolor{keywordflow}{if} (size!=0 \&\& mat.rows!=0 \&\& mat.cols!=0)}
+\DoxyCodeLine{133             \{}
+\DoxyCodeLine{134 \textcolor{preprocessor}{                \#pragma omp parallel for}}
+\DoxyCodeLine{135                 \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} s = 0;s < size;s++)}
+\DoxyCodeLine{136                 \{}
+\DoxyCodeLine{137                     \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} r = 0;r < mat.rows;r++)}
+\DoxyCodeLine{138                     \{}
+\DoxyCodeLine{139                         \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} c = 0;c < mat.cols;c++)}
+\DoxyCodeLine{140                         \{}
+\DoxyCodeLine{141                             mat.numpy[s][c+r*c] = 1;}
+\DoxyCodeLine{142                         \}}
+\DoxyCodeLine{143                     \}}
+\DoxyCodeLine{144                 \}}
+\DoxyCodeLine{145             \}}
+\DoxyCodeLine{146             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{148         \textcolor{keywordflow}{case} 2 :}
 \DoxyCodeLine{149             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{150         \}}
-\DoxyCodeLine{151     \}}
-\DoxyCodeLine{152 \};}
+\DoxyCodeLine{150         }
+\DoxyCodeLine{151         \textcolor{comment}{//一维张量即矢量}}
+\DoxyCodeLine{152         \textcolor{keywordflow}{case} 1 :}
+\DoxyCodeLine{153             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155         \textcolor{comment}{//零维张量即标量}}
+\DoxyCodeLine{156         \textcolor{keywordflow}{case} 0 :}
+\DoxyCodeLine{157             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{158         \}}
+\DoxyCodeLine{159     \}}
+\DoxyCodeLine{160 \};}
 
 \end{DoxyCode}

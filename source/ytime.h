@@ -4,6 +4,7 @@
  * @version 0.0.1
  * @date 2022-02-22 11:50
  * @copyright Copyright © 2014-2022 weichijunbo.
+ * @brief 计时器
  * @par ChangeLog:
  * <table>
  * <tr><th>Date       <th>Version <th>Author  <th>Description
@@ -17,7 +18,6 @@
 /**
 * @class <Timer> [ytime.h] [<ytime>]
 * @brief 基于STL的chrono实现计时器，计算函数，代码段执行时间
-* @author 殉道者
 * @note
 * 基于STL的chrono实现计时器，计算函数，代码段执行时间。创建Timer对象时为起始时间，Timer对象析构时
 * 获取当前时间并计算时间差，即可获得执行时间。结合大括号{}和类的生命周期来使用，可以很方便的计算函数、代码段的执行时间。

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
-  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['matrix_2',['Matrix',['../class_matrix.html',1,'']]]
+  ['layer_0',['Layer',['../class_layer.html',1,'']]],
+  ['log_1',['log',['../tools_8h.html#a2ecbbc8209107f108d54ed8730be5100',1,'tools.h']]]
 ];

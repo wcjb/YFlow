@@ -1,0 +1,127 @@
+\hypertarget{parser__mnist_8h_source}{}\doxysection{parser\+\_\+mnist.\+h}
+\label{parser__mnist_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/parser\_mnist.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/parser\_mnist.h}}
+\mbox{\hyperlink{parser__mnist_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{18 \textcolor{comment}{/*}}
+\DoxyCodeLine{19 \textcolor{comment}{ *读取mnist数据集的图像和标签}}
+\DoxyCodeLine{20 \textcolor{comment}{ *}}
+\DoxyCodeLine{21 \textcolor{comment}{*/}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tensor_8h}{Tensor.h}}"{}}}
+\DoxyCodeLine{27 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{/*}}
+\DoxyCodeLine{30 \textcolor{comment}{ *常用的CPU中的Intel处理器用小端格式，因此需要把大端数据}}
+\DoxyCodeLine{31 \textcolor{comment}{ *转换为小端是数据进行处理。转换操作为将低8位（0\string~8位）左移24位，}}
+\DoxyCodeLine{32 \textcolor{comment}{ *变成了高8位（24\string~32位），8\string~16位左移8位变成了（16\string~24位）。}}
+\DoxyCodeLine{33 \textcolor{comment}{ *将原高8位和高16位右移，变成了新的低8位和低16位。}}
+\DoxyCodeLine{34 \textcolor{comment}{*/}}
+\DoxyCodeLine{35 \textcolor{keyword}{inline} uint32\_t Bige2Little (uint32\_t value)}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37     \textcolor{keywordflow}{return} (value \& 0x000000FFU) << 24 | (value \& 0x0000FF00U) << 8 | }
+\DoxyCodeLine{38         (value \& 0x00FF0000U) >> 8 | (value \& 0xFF000000U) >> 24; }
+\DoxyCodeLine{39 \}}
+\DoxyCodeLine{46 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser__mnist_8h_a5aa0d571dff41519cd9f657b56aa70bc}{read}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&img\_path,\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&label\_path )}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48     ifstream fimage,flabel;}
+\DoxyCodeLine{49     fimage.open(img\_path,ios::in | ios::binary);}
+\DoxyCodeLine{50     flabel.open(label\_path,ios::in | ios::binary);}
+\DoxyCodeLine{51     \textcolor{keywordflow}{if} (!fimage.is\_open())}
+\DoxyCodeLine{52     \{}
+\DoxyCodeLine{53         cerr << \textcolor{stringliteral}{"{}open mnist image file error!"{}} << endl;}
+\DoxyCodeLine{54         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56     \textcolor{keywordflow}{if} (!flabel.is\_open())}
+\DoxyCodeLine{57     \{}
+\DoxyCodeLine{58         cerr << \textcolor{stringliteral}{"{}open mnist label file error!"{}} << endl;}
+\DoxyCodeLine{59         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     uint32\_t magic; \textcolor{comment}{// 文件中的魔术数}}
+\DoxyCodeLine{63     uint32\_t num\_img; \textcolor{comment}{// mnist图片数据集中的图像数目；}}
+\DoxyCodeLine{64     uint32\_t num\_lab; \textcolor{comment}{// mnist标签数据集中的标签数目}}
+\DoxyCodeLine{65     uint32\_t rows; \textcolor{comment}{// 图像的行数}}
+\DoxyCodeLine{66     uint32\_t cols; \textcolor{comment}{// 图像的列数}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{comment}{//从文件流中读取4个字节（魔术数）并将其从大端转为小端}}
+\DoxyCodeLine{69     fimage.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&magic),4); \textcolor{comment}{//reinterpret\_cast 强制类型转换}}
+\DoxyCodeLine{70     magic = Bige2Little(magic);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{keywordflow}{if} (magic != 2051)}
+\DoxyCodeLine{73     \{}
+\DoxyCodeLine{74         cerr << \textcolor{stringliteral}{"{}this is not the mnist image file!"{}} << endl;}
+\DoxyCodeLine{75         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     flabel.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&magic),4);}
+\DoxyCodeLine{79     magic = Bige2Little(magic);}
+\DoxyCodeLine{80     \textcolor{keywordflow}{if} (magic != 2049)}
+\DoxyCodeLine{81     \{}
+\DoxyCodeLine{82         cerr << \textcolor{stringliteral}{"{}this is not the mnist label file!"{}} << endl;}
+\DoxyCodeLine{83     \}}
+\DoxyCodeLine{84     \textcolor{comment}{// 读取数据集中图象数和标签数，判断是否相等}}
+\DoxyCodeLine{85     fimage.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&num\_img),4);}
+\DoxyCodeLine{86     num\_img = Bige2Little(num\_img);}
+\DoxyCodeLine{87     flabel.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&num\_lab),4);}
+\DoxyCodeLine{88     num\_lab = Bige2Little(num\_lab);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordflow}{if} (!(num\_img == num\_lab))}
+\DoxyCodeLine{91     \{}
+\DoxyCodeLine{92         cerr << \textcolor{stringliteral}{"{}the image file and label file are not a pair！"{}} << endl;}
+\DoxyCodeLine{93     \}}
+\DoxyCodeLine{94      }
+\DoxyCodeLine{95     \textcolor{comment}{// 读取图像的分辨率}}
+\DoxyCodeLine{96     fimage.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),4);}
+\DoxyCodeLine{97     rows = Bige2Little(rows);}
+\DoxyCodeLine{98     fimage.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),4);}
+\DoxyCodeLine{99     cols = Bige2Little(cols);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     cout << \textcolor{stringliteral}{"{}magic number = "{}} << magic << endl;}
+\DoxyCodeLine{102     cout << \textcolor{stringliteral}{"{}number of images = "{}} << num\_img << endl;}
+\DoxyCodeLine{103     cout << \textcolor{stringliteral}{"{}rows = "{}} << rows << endl;}
+\DoxyCodeLine{104     cout << \textcolor{stringliteral}{"{}cols = "{}} << cols << endl;}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     \textcolor{keywordtype}{int} size = rows * cols;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} **image  = \textcolor{keyword}{new} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* [num\_img];}
+\DoxyCodeLine{109     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < num\_img;i++)}
+\DoxyCodeLine{110     \{}
+\DoxyCodeLine{111         image[i] = \textcolor{keyword}{new} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}[size];}
+\DoxyCodeLine{112     \}}
+\DoxyCodeLine{113     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *label = \textcolor{keyword}{new} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}[num\_lab];}
+\DoxyCodeLine{114     \textcolor{comment}{// 读取图片数据}}
+\DoxyCodeLine{115     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *pixels = \textcolor{keyword}{new} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}[size];}
+\DoxyCodeLine{116     cout << \textcolor{stringliteral}{"{}number of label = "{}} << num\_lab << endl;}
+\DoxyCodeLine{117     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} item = 0;item < num\_img;item++)}
+\DoxyCodeLine{118     \{}
+\DoxyCodeLine{119         fimage.read((\textcolor{keywordtype}{char}*)pixels,rows * cols);}
+\DoxyCodeLine{120         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < size;i++ )}
+\DoxyCodeLine{121         \{}
+\DoxyCodeLine{122             image[item][i] = pixels[i];}
+\DoxyCodeLine{123         \}}
+\DoxyCodeLine{124         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} lab = 0;}
+\DoxyCodeLine{125         flabel.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&lab),\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}));}
+\DoxyCodeLine{126         cout << lab << endl;}
+\DoxyCodeLine{127     \}}
+\DoxyCodeLine{128     }
+\DoxyCodeLine{129     \textcolor{comment}{// for (int i = 0;i < num\_lab;i++)}}
+\DoxyCodeLine{130     \textcolor{comment}{// \{}}
+\DoxyCodeLine{131     \textcolor{comment}{//     cout << label;}}
+\DoxyCodeLine{132     \textcolor{comment}{// \}}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keyword}{delete}[] label;}
+\DoxyCodeLine{135     \textcolor{keyword}{delete}[] pixels;}
+\DoxyCodeLine{136     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < num\_img;j++)}
+\DoxyCodeLine{137     \{}
+\DoxyCodeLine{138         \textcolor{keyword}{delete}[] image[j];}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140     \textcolor{keyword}{delete}[] image;}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}

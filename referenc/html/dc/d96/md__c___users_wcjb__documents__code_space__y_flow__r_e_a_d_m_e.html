@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YFlow: YFlow</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YFlow
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">YFlow </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p >&emsp;&emsp;基于C++和cuda实现的深度学习框架YFlow，这是作者练手之作，用于总结回顾平时工作中各类算法，当然，由于局限于个人水平，目前仍有许多不足之处，目前计划是在一年内完成深度学习相关开发底层实用C++和CUDA混合开发。在实现过程中，我本人也接触学习了许多底层算法计算优化的技巧，本项目参考了Darknet框架的内容，并尝试进行突破。本项目的最终目标是成为一个基于C++和CUDA实现的高效率机器学习框架。</p>
+<ul>
+<li>项目结构<ul>
+<li><p class="startli">Random</p>
+<p class="startli">&emsp;&emsp;随机数模块，用于生成符合统计分布的随机数，基于学习理论的考虑，会依次实现当下所有随机数生成算法,实现进度如下:</p><ul>
+<li>[x] 冯·诺伊曼平方取中法及其改良算法;</li>
+<li>[x] 线性同余发生器(Kobayashi混合同余发生器);</li>
+<li>[ ] 梅森旋转演算法;</li>
+<li>[ ] FSR发生器;</li>
+<li>[ ] 组合发生器（因为效率原因，未作实现）;</li>
+</ul>
+<p class="startli">&emsp;&emsp;上述随机数生成算法用于生成符合均匀分布(即一个周期内所有数据出现是等概率)的随机数，再基于均匀分布生成其它分布的随机数。实现进度如下：</p><ul>
+<li>[x] 均匀分布</li>
+<li>[ ] 正态分布（高斯分布）</li>
+<li>[ ] 二项分布</li>
+<li>[ ] 伯努利分布</li>
+<li>[ ] 拉普拉斯分布</li>
+<li>[ ] 泊松分布</li>
+<li>[ ] 指数分布</li>
+<li>[ ] 伽马分布</li>
+<li>[ ] 贝塔分布</li>
+<li>[ ] 狄拉克分布</li>
+</ul>
+</li>
+<li><p class="startli">tools</p>
+<p class="startli">&emsp;&emsp;深度学习常用基本初等函数的实现，目前已完成的实现有：</p><ul>
+<li>[x] 快速幂</li>
+<li>[x] 卡马克快速倒数平方根算法</li>
+<li>[x] 基于泰勒级数和Remez算法的自然对数函数（ln）的实现</li>
+<li>[ ] 基于积分变上限函数和自适应辛普森法的自然对数函数（ln）的实现</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="fragment">+ Tensor
+
+    &amp;emsp;&amp;emsp;实现张量数据结构，是构建所有算法模型最基本单元，实现0~3阶张量。
+</pre> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

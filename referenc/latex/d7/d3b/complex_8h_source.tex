@@ -1,0 +1,213 @@
+\hypertarget{complex_8h_source}{}\doxysection{complex.\+h}
+\label{complex_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/complex.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/complex.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{3 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{classcomplex}{complex}};}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doapl(\mbox{\hyperlink{classcomplex}{complex}}\& ths,\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r);}
+\DoxyCodeLine{8 \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doami(\mbox{\hyperlink{classcomplex}{complex}}\& ths,\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r);}
+\DoxyCodeLine{9 \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doaml(\mbox{\hyperlink{classcomplex}{complex}}\& ths,\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r);}
+\DoxyCodeLine{10 \textcolor{comment}{// 模版类}}
+\DoxyCodeLine{11 \textcolor{comment}{//template<typename T>}}
+\DoxyCodeLine{12 \textcolor{comment}{/*}}
+\DoxyCodeLine{13 \textcolor{comment}{complex<double> c(2,1);}}
+\DoxyCodeLine{14 \textcolor{comment}{*/}}
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classcomplex}{complex}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \textcolor{comment}{// 初始列，效率较高}}
+\DoxyCodeLine{19     \mbox{\hyperlink{classcomplex}{complex}} (\textcolor{keywordtype}{double} r = 0, \textcolor{keywordtype}{double} i = 0) : re (r), im (i)  \{\}}
+\DoxyCodeLine{20     \textcolor{comment}{/* 函数可以定义在类内部也可以定义在类外部，定义在类内部的}}
+\DoxyCodeLine{21 \textcolor{comment}{    函数可能成为inline（内联)函数。和宏定义类似}}
+\DoxyCodeLine{22 \textcolor{comment}{    */}}
+\DoxyCodeLine{23     \mbox{\hyperlink{classcomplex}{complex}}\& operator += (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\&);}
+\DoxyCodeLine{24     \mbox{\hyperlink{classcomplex}{complex}}\& operator -\/= (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\&);}
+\DoxyCodeLine{25     \mbox{\hyperlink{classcomplex}{complex}}\& operator *= (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\&);}
+\DoxyCodeLine{26     \mbox{\hyperlink{classcomplex}{complex}}\& operator /= (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\&);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{comment}{// 内联函数，但最后不一定成为内联函数，需编译器确定}}
+\DoxyCodeLine{29     \textcolor{comment}{//类内部使用const关键词的函数是指不会改变数据内容的函数}}
+\DoxyCodeLine{30     \textcolor{keywordtype}{double} real ()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} re;\}}
+\DoxyCodeLine{31     \textcolor{keywordtype}{double} imag ()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} im;\}}
+\DoxyCodeLine{32 \textcolor{keyword}{private}:}
+\DoxyCodeLine{33     \textcolor{comment}{//定义复数的实部和虚部}}
+\DoxyCodeLine{34     \textcolor{keywordtype}{double} re, im;}
+\DoxyCodeLine{35     \textcolor{keyword}{friend} \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doapl (\mbox{\hyperlink{classcomplex}{complex}} *,\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\&);}
+\DoxyCodeLine{36     \textcolor{keyword}{friend} \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doami (\mbox{\hyperlink{classcomplex}{complex}} *, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\&);}
+\DoxyCodeLine{37     \textcolor{keyword}{friend} \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doaml (\mbox{\hyperlink{classcomplex}{complex}} *, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\&);}
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39    }
+\DoxyCodeLine{40 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doapl (\mbox{\hyperlink{classcomplex}{complex}}* ths, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r)}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42   ths-\/>re += r.re;}
+\DoxyCodeLine{43   ths-\/>im += r.im;}
+\DoxyCodeLine{44   \textcolor{keywordflow}{return} *ths;}
+\DoxyCodeLine{45 \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}}\& complex::operator += (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r)}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49     \textcolor{keywordflow}{return} \_\_doapl (\textcolor{keyword}{this},r);}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}}\&  \_\_doami (\mbox{\hyperlink{classcomplex}{complex}}* ths, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r)}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54   ths-\/>re -\/= r.re;}
+\DoxyCodeLine{55   ths-\/>im -\/= r.im;}
+\DoxyCodeLine{56   \textcolor{keywordflow}{return} *ths;}
+\DoxyCodeLine{57 \}}
+\DoxyCodeLine{58  }
+\DoxyCodeLine{59 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}}\& complex::operator -\/= (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r)}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61   \textcolor{keywordflow}{return} \_\_doami (\textcolor{keyword}{this}, r);}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}}\& \_\_doaml (\mbox{\hyperlink{classcomplex}{complex}}* ths, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r)}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66   \textcolor{keywordtype}{double} f = ths-\/>re * r.re -\/ ths-\/>im * r.im;}
+\DoxyCodeLine{67   ths-\/>im = ths-\/>re * r.im + ths-\/>im * r.re;}
+\DoxyCodeLine{68   ths-\/>re = f;}
+\DoxyCodeLine{69   \textcolor{keywordflow}{return} *ths;}
+\DoxyCodeLine{70 \}}
+\DoxyCodeLine{71 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}}\& complex::operator *= (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& r)}
+\DoxyCodeLine{72 \{}
+\DoxyCodeLine{73   \textcolor{keywordflow}{return} \_\_doaml (\textcolor{keyword}{this}, r);}
+\DoxyCodeLine{74 \}}
+\DoxyCodeLine{75 \textcolor{comment}{// global 函数}}
+\DoxyCodeLine{76 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} imag (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x)}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78   \textcolor{keywordflow}{return} x.imag ();}
+\DoxyCodeLine{79 \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} real (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x)}
+\DoxyCodeLine{82 \{}
+\DoxyCodeLine{83   \textcolor{keywordflow}{return} x.real ();}
+\DoxyCodeLine{84 \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator + (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{87 \{}
+\DoxyCodeLine{88   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x) + real (y), imag (x) + imag (y));}
+\DoxyCodeLine{89 \}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator + (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keywordtype}{double} y)}
+\DoxyCodeLine{92 \{}
+\DoxyCodeLine{93   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x) + y, imag (x));}
+\DoxyCodeLine{94 \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator + (\textcolor{keywordtype}{double} x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{97 \{}
+\DoxyCodeLine{98   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (x + real (y), imag (y));}
+\DoxyCodeLine{99 \}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator -\/ (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x) -\/ real (y), imag (x) -\/ imag (y));}
+\DoxyCodeLine{104 \}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator -\/ (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keywordtype}{double} y)}
+\DoxyCodeLine{107 \{}
+\DoxyCodeLine{108   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x) -\/ y, imag (x));}
+\DoxyCodeLine{109 \}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator -\/ (\textcolor{keywordtype}{double} x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{112 \{}
+\DoxyCodeLine{113   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (x -\/ real (y), -\/ imag (y));}
+\DoxyCodeLine{114 \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator * (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{117 \{}
+\DoxyCodeLine{118   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x) * real (y) -\/ imag (x) * imag (y),}
+\DoxyCodeLine{119                real (x) * imag (y) + imag (x) * real (y));}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator * (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keywordtype}{double} y)}
+\DoxyCodeLine{123 \{}
+\DoxyCodeLine{124   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x) * y, imag (x) * y);}
+\DoxyCodeLine{125 \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator * (\textcolor{keywordtype}{double} x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{128 \{}
+\DoxyCodeLine{129   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (x * real (y), x * imag (y));}
+\DoxyCodeLine{130 \}}
+\DoxyCodeLine{131 \textcolor{comment}{// 复数与实数的除法}}
+\DoxyCodeLine{132 \mbox{\hyperlink{classcomplex}{complex}} operator / (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keywordtype}{double} y)}
+\DoxyCodeLine{133 \{}
+\DoxyCodeLine{134   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x) / y, imag (x) / y);}
+\DoxyCodeLine{135 \}}
+\DoxyCodeLine{136 \textcolor{comment}{// 复数与复数之前的除法}}
+\DoxyCodeLine{137 \mbox{\hyperlink{classcomplex}{complex}} operator / (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x,\mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{138 \{}
+\DoxyCodeLine{139   \textcolor{keywordflow}{return} x*y/(real (y) * real (y)+imag (y) * imag (y));}
+\DoxyCodeLine{140 \}}
+\DoxyCodeLine{141 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator + (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x)}
+\DoxyCodeLine{142 \{}
+\DoxyCodeLine{143   \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{144 \}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} operator -\/ (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x)}
+\DoxyCodeLine{147 \{}
+\DoxyCodeLine{148   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (-\/real (x), -\/imag (x));}
+\DoxyCodeLine{149 \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} operator == (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{152 \{}
+\DoxyCodeLine{153   \textcolor{keywordflow}{return} real (x) == real (y) \&\& imag (x) == imag (y);}
+\DoxyCodeLine{154 \}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} operator == (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keywordtype}{double} y)}
+\DoxyCodeLine{157 \{}
+\DoxyCodeLine{158   \textcolor{keywordflow}{return} real (x) == y \&\& imag (x) == 0;}
+\DoxyCodeLine{159 \}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} operator == (\textcolor{keywordtype}{double} x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{162 \{}
+\DoxyCodeLine{163   \textcolor{keywordflow}{return} x == real (y) \&\& imag (y) == 0;}
+\DoxyCodeLine{164 \}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} operator != (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{167 \{}
+\DoxyCodeLine{168   \textcolor{keywordflow}{return} real (x) != real (y) || imag (x) != imag (y);}
+\DoxyCodeLine{169 \}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} operator != (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x, \textcolor{keywordtype}{double} y)}
+\DoxyCodeLine{172 \{}
+\DoxyCodeLine{173   \textcolor{keywordflow}{return} real (x) != y || imag (x) != 0;}
+\DoxyCodeLine{174 \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} operator != (\textcolor{keywordtype}{double} x, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& y)}
+\DoxyCodeLine{177 \{}
+\DoxyCodeLine{178   \textcolor{keywordflow}{return} x != real (y) || imag (y) != 0;}
+\DoxyCodeLine{179 \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{comment}{// 将复数转为极坐标模式}}
+\DoxyCodeLine{182 \textcolor{comment}{// inline complex polar (double r, double t)}}
+\DoxyCodeLine{183 \textcolor{comment}{// \{}}
+\DoxyCodeLine{184 \textcolor{comment}{//   return complex (r * cos (t), r * sin (t));}}
+\DoxyCodeLine{185 \textcolor{comment}{// \}}}
+\DoxyCodeLine{186 \textcolor{comment}{// 求共轭复数}}
+\DoxyCodeLine{187 \textcolor{keyword}{inline} \mbox{\hyperlink{classcomplex}{complex}} conj (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x) }
+\DoxyCodeLine{188 \{}
+\DoxyCodeLine{189   \textcolor{keywordflow}{return} \mbox{\hyperlink{classcomplex}{complex}} (real (x), -\/imag (x));}
+\DoxyCodeLine{190 \}}
+\DoxyCodeLine{191 \textcolor{comment}{//  求复数的标准化形式}}
+\DoxyCodeLine{192 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} norm (\textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x)}
+\DoxyCodeLine{193 \{}
+\DoxyCodeLine{194   \textcolor{keywordflow}{return} real (x) * real (x) + imag (x) * imag (x);}
+\DoxyCodeLine{195 \}}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 ostream\& operator << (ostream\& os, \textcolor{keyword}{const} \mbox{\hyperlink{classcomplex}{complex}}\& x)}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199   \textcolor{keywordflow}{if} (imag (x) >= 0)}
+\DoxyCodeLine{200   \{}
+\DoxyCodeLine{201     \textcolor{keywordflow}{return} os << real (x) << \textcolor{charliteral}{'+'} << imag (x) << \textcolor{charliteral}{'i'};}
+\DoxyCodeLine{202   \}}
+\DoxyCodeLine{203   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{204   \{}
+\DoxyCodeLine{205     \textcolor{keywordflow}{return} os << real (x) << \textcolor{charliteral}{'-\/'} << -\/imag (x) << \textcolor{charliteral}{'i'};}
+\DoxyCodeLine{206   \}}
+\DoxyCodeLine{207 \}}
+
+\end{DoxyCode}

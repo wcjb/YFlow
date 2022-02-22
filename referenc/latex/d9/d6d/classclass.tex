@@ -1,0 +1,70 @@
+\hypertarget{classclass}{}\doxysection{class类 参考}
+\label{classclass}\index{class@{class}}
+
+
+实现张量数据结构，用于搭建神经网络  
+
+
+
+
+\doxysubsection{详细描述}
+实现张量数据结构，用于搭建神经网络 
+
+\mbox{[}\mbox{\hyperlink{_tensor_8h}{Tensor.\+h}}\mbox{]} \mbox{[}$<$\+Tensor$>$\mbox{]} \begin{DoxyAuthor}{作者}
+殉道者
+\end{DoxyAuthor}
+\quad{}\quad{}实现张量数据结构，用于搭建神经网络，本质是多维矩阵。需要注意的是，当进行2维以上张量的运算时，两个张量之间的 加减和二维矩阵类似。而两个高维张量的乘法可参考\+Tensorflow中matmul的源码说明来看，如果张量的dimention大于2， 实际上进行的会是batch\+\_\+mat\+\_\+mul,此时进行叉乘的是batch中的每一个切片（slice），即高维张量的运算实质还是2维张 量的运算，只不过是在更高维度的切片下，如下所示： output\mbox{[}..., \+:, \+:\mbox{]} = matrix(x\mbox{[}..., \+:, \+:\mbox{]}) $\ast$ matrix(y\mbox{[}..., \+:, \+:\mbox{]}) 使用tensorflow验证如下\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{In [2]: a}
+\DoxyCodeLine{Out[2]: }
+\DoxyCodeLine{ <tf.Tensor: shape=(2, 3, 2), dtype=int32, numpy=}
+\DoxyCodeLine{array([[[1, 1],}
+\DoxyCodeLine{         [2, 2],}
+\DoxyCodeLine{         [3, 3]],}
+\DoxyCodeLine{}
+\DoxyCodeLine{     [[4, 4],}
+\DoxyCodeLine{         [5, 5],}
+\DoxyCodeLine{         [6, 6]]])>}
+\DoxyCodeLine{}
+\DoxyCodeLine{In [3]: c = tf.reshape(a,(2,2,3))}
+\DoxyCodeLine{}
+\DoxyCodeLine{In [4]: c}
+\DoxyCodeLine{Out[4]: }
+\DoxyCodeLine{ <tf.Tensor: shape=(2, 2, 3), dtype=int32, numpy=}
+\DoxyCodeLine{ array([[[1, 1, 2],}
+\DoxyCodeLine{         [2, 3, 3]],}
+\DoxyCodeLine{}
+\DoxyCodeLine{     [[4, 4, 5],}
+\DoxyCodeLine{         [5, 6, 6]]])>}
+\DoxyCodeLine{}
+\DoxyCodeLine{ In [5]: tf.matmul(a,c)}
+\DoxyCodeLine{ Out[5]: }
+\DoxyCodeLine{ <tf.Tensor: shape=(2, 3, 3), dtype=int32, numpy=}
+\DoxyCodeLine{ array([[[ 3,  4,  5],}
+\DoxyCodeLine{         [ 6,  8, 10],}
+\DoxyCodeLine{         [ 9, 12, 15]],}
+\DoxyCodeLine{}
+\DoxyCodeLine{     [[36, 40, 44],}
+\DoxyCodeLine{       [45, 50, 55],}
+\DoxyCodeLine{          [54, 60, 66]]])> }
+
+\end{DoxyCode}
+ 则要求高维张量相乘符合如下规则：
+\begin{DoxyEnumerate}
+\item 两个张量能相乘，则二者除了最后两个维度可以不相等外，其它维度必须相等；
+\item 两个张量能相乘，则二者的最后两个维度必须满足二维矩阵相乘的条件；
+\end{DoxyEnumerate}
+
+\begin{DoxyAttention}{注意}
+另外，因为张量乘法本质上为矩阵乘法，由于在神经网络中设计到大量的巨型矩阵的乘法，所以很有必要 优化矩阵乘法的计算逻辑，本实现使用通用矩阵乘（\+GEMM，\+General \mbox{\hyperlink{class_matrix}{Matrix}} Multiplication）优化矩阵 乘法。可参考下文\+: \href{https://jackwish.net/2019/gemm-optimization.html}{\texttt{ 通用矩阵乘（\+GEMM）优化算法}} \href{https://zhuanlan.zhihu.com/p/66958390}{\texttt{ 通用矩阵乘（\+GEMM）优化与卷积计算}} 常规的矩阵乘法计算算法的时间复杂度为\+O(n$^\wedge$3) = O(n$^\wedge$(log2(8)))
+\begin{DoxyEnumerate}
+\item 分块矩阵计算
+\item Strassen 算法，时间复杂度是O(n$^\wedge$2.807) = O(n$^\wedge$(log2(7)))
+\item Coppersmith-\/\+Winograd算法，时间复杂度是\+O（n$^\wedge$2.38) 
+\end{DoxyEnumerate}
+\end{DoxyAttention}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/wcjb/\+Documents/\+Code\+Space/\+YFlow/source/\mbox{\hyperlink{_tensor_8h}{Tensor.\+h}}\end{DoxyCompactItemize}
