@@ -1,0 +1,43 @@
+\hypertarget{_p_i_l_8h_source}{}\doxysection{PIL.\+h}
+\label{_p_i_l_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/img/PIL.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/img/PIL.h}}
+\mbox{\hyperlink{_p_i_l_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define STB\_IMAGE\_IMPLEMENTATION}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}stb\_image.h"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define STB\_IMAGE\_WRITE\_IMPLEMENTATION}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}stb\_image\_write.h"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define STB\_IMAGE\_RESIZE\_IMPLEMENTATION}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}stb\_image\_resize.h"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{25 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{27 \textcolor{comment}{// int main() \{}}
+\DoxyCodeLine{28 \textcolor{comment}{//     std::cout << "{}Hello, STB\_Image"{} << std::endl;}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{//     string inputPath = "{}C:\(\backslash\)\(\backslash\)Users\(\backslash\)\(\backslash\)wcjb\(\backslash\)\(\backslash\)Documents\(\backslash\)\(\backslash\)Dataset\(\backslash\)\(\backslash\)hg.jpg"{};}}
+\DoxyCodeLine{31 \textcolor{comment}{//     int iw, ih, n;}}
+\DoxyCodeLine{32     }
+\DoxyCodeLine{33 \textcolor{comment}{//     // 加载图片获取宽、高、颜色通道信息}}
+\DoxyCodeLine{34 \textcolor{comment}{//     unsigned char *idata = stbi\_load(inputPath.c\_str(), \&iw, \&ih, \&n, 0);}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{//     int ow = iw / 2;}}
+\DoxyCodeLine{37 \textcolor{comment}{//     int oh = ih / 2;}}
+\DoxyCodeLine{38 \textcolor{comment}{//     auto *odata = (unsigned char *) malloc(ow * oh * n);}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{comment}{//     // 改变图片尺寸}}
+\DoxyCodeLine{41 \textcolor{comment}{//     stbir\_resize(idata, iw, ih, 0, odata, ow, oh, 0, STBIR\_TYPE\_UINT8, n, STBIR\_ALPHA\_CHANNEL\_NONE, 0,}}
+\DoxyCodeLine{42 \textcolor{comment}{//                  STBIR\_EDGE\_CLAMP, STBIR\_EDGE\_CLAMP,}}
+\DoxyCodeLine{43 \textcolor{comment}{//                  STBIR\_FILTER\_BOX, STBIR\_FILTER\_BOX,}}
+\DoxyCodeLine{44 \textcolor{comment}{//                  STBIR\_COLORSPACE\_SRGB, nullptr}}
+\DoxyCodeLine{45 \textcolor{comment}{//     );}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{//     string outputPath = "{}C:\(\backslash\)\(\backslash\)Users\(\backslash\)\(\backslash\)wcjb\(\backslash\)\(\backslash\)Documents\(\backslash\)\(\backslash\)Dataset\(\backslash\)\(\backslash\)hg\_out.jpg"{};}}
+\DoxyCodeLine{48 \textcolor{comment}{//     // 写入图片}}
+\DoxyCodeLine{49 \textcolor{comment}{//     stbi\_write\_png(outputPath.c\_str(), ow, oh, n, odata, 0);}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{//     stbi\_image\_free(idata);}}
+\DoxyCodeLine{52 \textcolor{comment}{//     stbi\_image\_free(odata);}}
+\DoxyCodeLine{53 \textcolor{comment}{//     return 0;}}
+\DoxyCodeLine{54 \textcolor{comment}{// \}}}
+
+\end{DoxyCode}

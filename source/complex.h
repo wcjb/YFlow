@@ -1,7 +1,4 @@
-/*Guard 防卫式声明*/
-#ifndef __COMPLEX__
-#define __COMPLEX__
-
+#pragma once
 #include <iostream>
 using namespace std;
 
@@ -208,6 +205,3 @@ ostream& operator << (ostream& os, const complex& x)
     return os << real (x) << '-' << -imag (x) << 'i';
   }
 }
-
-#endif
-//同一个类的各个对象互为友元

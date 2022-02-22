@@ -34,6 +34,8 @@
 #include <iostream>
 using namespace std;
 #include "source/tools.h"
+#include "source/ytime.h"
+#include <cmath>
 
 int main(int argc, char** argv)
 {
@@ -62,8 +64,11 @@ int main(int argc, char** argv)
     // {
     //         cout << "int" << endl;
     // }
-	float a = __ieee754_log(10);
-	cout << a << endl;
-
+	for( int i = 100;i< 200;i+=5 ) 
+	{
+		float a = __ieee754_log(i);
+		float b = log(i);
+		cout << a << " " << b << endl;	
+	}
 	return 0;
 }

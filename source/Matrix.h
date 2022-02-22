@@ -1,5 +1,3 @@
-#ifndef __MATRIX__
-#define __MATRIX__
 #pragma once
 
 #include <iostream>
@@ -322,6 +320,3 @@ Matrix<_T> Transpose(const Matrix<_T> &B)
             temp.num[j][i] = B.num[i][j];
     return temp;
 }
-
-
-#endif

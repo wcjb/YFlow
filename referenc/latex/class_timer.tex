@@ -1,0 +1,36 @@
+\hypertarget{class_timer}{}\doxysection{Timer类 参考}
+\label{class_timer}\index{Timer@{Timer}}
+
+
+基于\+STL的chrono实现计时器，计算函数，代码段执行时间  
+
+
+
+
+{\ttfamily \#include $<$ytime$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_timer_a5f16e8da27d2a5a5242dead46de05d97}\label{class_timer_a5f16e8da27d2a5a5242dead46de05d97}} 
+{\bfseries Timer} ()
+\begin{DoxyCompactList}\small\item\em 记录构造函数被调用时的时间 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}\label{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}} 
+{\bfseries $\sim$\+Timer} ()
+\begin{DoxyCompactList}\small\item\em 调用析构函数时，获取当前时间，并计算对象从被构造到析构所经过时间（毫秒） \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+基于\+STL的chrono实现计时器，计算函数，代码段执行时间 
+
+\mbox{]} \begin{DoxyAuthor}{作者}
+殉道者 
+\end{DoxyAuthor}
+\begin{DoxyNote}{注解}
+基于\+STL的chrono实现计时器，计算函数，代码段执行时间。创建\+Timer对象时为起始时间，\+Timer对象析构时 获取当前时间并计算时间差，即可获得执行时间。结合大括号\{\}和类的生命周期来使用，可以很方便的计算函数、代码段的执行时间。 目前只实现了毫秒级别精度的计算器，足够开发使用。 
+\end{DoxyNote}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/wcjb/\+Documents/\+Code\+Space/\+YFlow/source/\mbox{\hyperlink{ytime_8h}{ytime.\+h}}\end{DoxyCompactItemize}

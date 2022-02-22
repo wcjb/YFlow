@@ -1,16 +1,15 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.cpp" "C:/Users/wcjb/Documents/CodeSpace/YFlow/build/source/CMakeFiles/source.dir/Random.cpp.obj"
-  "C:/Users/wcjb/Documents/CodeSpace/YFlow/source/tools.cpp" "C:/Users/wcjb/Documents/CodeSpace/YFlow/build/source/CMakeFiles/source.dir/tools.cpp.obj"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Random.cpp" "source/CMakeFiles/source.dir/Random.cpp.obj" "gcc" "source/CMakeFiles/source.dir/Random.cpp.obj.d"
+  "C:/Users/wcjb/Documents/CodeSpace/YFlow/source/tools.cpp" "source/CMakeFiles/source.dir/tools.cpp.obj" "gcc" "source/CMakeFiles/source.dir/tools.cpp.obj.d"
   )
 
 # Targets to which this target links.

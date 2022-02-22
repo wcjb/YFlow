@@ -1,0 +1,82 @@
+\hypertarget{_tensor_8h_source}{}\doxysection{Tensor.\+h}
+\label{_tensor_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Tensor.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/Tensor.h}}
+\mbox{\hyperlink{_tensor_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#include "{}Matrix.h"{}}}
+\DoxyCodeLine{68 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> }
+\DoxyCodeLine{71 \textcolor{keyword}{class }\mbox{\hyperlink{class_tensor}{Tensor}}}
+\DoxyCodeLine{72 \{}
+\DoxyCodeLine{73 \textcolor{keyword}{private}:}
+\DoxyCodeLine{77     \textcolor{keyword}{struct }matrix}
+\DoxyCodeLine{78     \{}
+\DoxyCodeLine{79         \textcolor{keywordtype}{int} rows;   }
+\DoxyCodeLine{80         \textcolor{keywordtype}{int} cols;   }
+\DoxyCodeLine{81         T **numpy;    }
+\DoxyCodeLine{82     \};}
+\DoxyCodeLine{86     \textcolor{keyword}{struct }vector}
+\DoxyCodeLine{87     \{}
+\DoxyCodeLine{88         \textcolor{keywordtype}{int} number;  }
+\DoxyCodeLine{89         T *numpy;    }
+\DoxyCodeLine{90     \};}
+\DoxyCodeLine{92     T constant;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{keyword}{public}:}
+\DoxyCodeLine{95     \textcolor{keywordtype}{int} Dimension;}
+\DoxyCodeLine{96     \textcolor{keywordtype}{int} *Shape;   }
+\DoxyCodeLine{97     \textcolor{keywordtype}{string} dtype;  }
+\DoxyCodeLine{98     \textcolor{comment}{//std::type\_info(int)}}
+\DoxyCodeLine{104 \textcolor{comment}{}    \mbox{\hyperlink{class_tensor_a41003ef726406f19a946bf8ad8f5067e}{Tensor}} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} demension,\textcolor{keyword}{const} \textcolor{keywordtype}{int} *shape) : Dimension(demension),Shape(shape)}
+\DoxyCodeLine{105     \{}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107         matrix mat;}
+\DoxyCodeLine{108         mat.rows = *(shape+demension-\/1);}
+\DoxyCodeLine{109         mat.cols = *(shape+demension-\/2);}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111         \textcolor{keywordflow}{switch} (demension)}
+\DoxyCodeLine{112         \{}
+\DoxyCodeLine{114         \textcolor{keywordflow}{case} 3 :}
+\DoxyCodeLine{115             \textcolor{comment}{//三维张量第一维的值}}
+\DoxyCodeLine{116             \textcolor{keywordtype}{int} size = shape[0];   }
+\DoxyCodeLine{117             \textcolor{comment}{//初始化matrix结构体的二级指针成员numpy，即分配内存空间}}
+\DoxyCodeLine{118             mat.numpy = \textcolor{keyword}{new} T* [size];}
+\DoxyCodeLine{119             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < size;j++)}
+\DoxyCodeLine{120             \{}
+\DoxyCodeLine{121                 mat.numpy[j] = \textcolor{keyword}{new} T* [mat.rows * mat.cols];}
+\DoxyCodeLine{122             \}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124             \textcolor{keywordflow}{if} (size!=0 \&\& mat.rows!=0 \&\& mat.cols!=0)}
+\DoxyCodeLine{125             \{}
+\DoxyCodeLine{126 \textcolor{preprocessor}{                \#pragma omp parallel for}}
+\DoxyCodeLine{127                 \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} s = 0;s < size;s++)}
+\DoxyCodeLine{128                 \{}
+\DoxyCodeLine{129                     \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} r = 0;r < mat.rows;r++)}
+\DoxyCodeLine{130                     \{}
+\DoxyCodeLine{131                         \textcolor{keywordflow}{for} (\textcolor{keyword}{register} \textcolor{keywordtype}{int} c = 0;c < mat.cols;c++)}
+\DoxyCodeLine{132                         \{}
+\DoxyCodeLine{133                             mat.numpy[s][c+r*c] = 1;}
+\DoxyCodeLine{134                         \}}
+\DoxyCodeLine{135                     \}}
+\DoxyCodeLine{136                 \}}
+\DoxyCodeLine{137             \}}
+\DoxyCodeLine{138             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{140         \textcolor{keywordflow}{case} 2 :}
+\DoxyCodeLine{141             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{142         }
+\DoxyCodeLine{143         \textcolor{comment}{//一维张量即矢量}}
+\DoxyCodeLine{144         \textcolor{keywordflow}{case} 1 :}
+\DoxyCodeLine{145             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147         \textcolor{comment}{//零维张量即标量}}
+\DoxyCodeLine{148         \textcolor{keywordflow}{case} 0 :}
+\DoxyCodeLine{149             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{150         \}}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152 \};}
+
+\end{DoxyCode}

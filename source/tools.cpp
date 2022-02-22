@@ -107,7 +107,8 @@ double __ieee754_log(double x)
 	lx = __LO(x);		/* low  word of x */
 
 	k=0;
-	if (hx < 0x00100000) {			/* x < 2**-1022  */
+	if (hx < 0x00100000) 
+	{			/* x < 2**-1022  */
 	    if (((hx&0x7fffffff)|lx)==0) 
 		return -two54/zero;		/* log(+-0)=-inf */
 	    if (hx<0) return (x-x)/zero;	/* log(-#) = NaN */
@@ -138,11 +139,13 @@ double __ieee754_log(double x)
 	t2= z*(Lg1+w*(Lg3+w*(Lg5+w*Lg7))); 
 	i |= j;
 	R = t2+t1;
-	if(i>0) {
+	if(i>0) 
+	{
 	    hfsq=0.5*f*f;
 	    if(k==0) return f-(hfsq-s*(hfsq+R)); else
 		     return dk*ln2_hi-((hfsq-(s*(hfsq+R)+dk*ln2_lo))-f);
-	} else {
+	} else 
+	{
 	    if(k==0) return f-s*(f-R); else
 		     return dk*ln2_hi-((s*(f-R)-dk*ln2_lo)-f);
 	}

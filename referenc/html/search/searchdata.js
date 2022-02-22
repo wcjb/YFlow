@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "ailmprty",
-  1: "almt",
-  2: "pt",
-  3: "irt",
-  4: "y"
+  0: "_abciklmprsty~",
+  1: "aclmst",
+  2: "kmprty",
+  3: "_bilmrst~",
+  4: "_",
+  5: "ry"
 };
 
 var indexSectionNames =
@@ -13,15 +14,17 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "pages"
+  4: "variables",
+  5: "pages"
 };
 
 var indexSectionLabels =
 {
-  0: "All",
-  1: "Classes",
-  2: "Files",
-  3: "Functions",
-  4: "Pages"
+  0: "全部",
+  1: "类",
+  2: "文件",
+  3: "函数",
+  4: "变量",
+  5: "页"
 };
 

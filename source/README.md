@@ -5,7 +5,6 @@
 
    > [Weyl sequence](https://www.wikiwand.com/en/Weyl_sequence)
 
-
 + 魔数
 
     &emsp;&emsp;很多类型的文件，其起始的几个字节的内容是固定的（或是有意填充，或是本就如此）。根据这几个字节的内容就可以确定文件类型，因此这几个字节的内容被称为魔数 (magic number)。
@@ -78,3 +77,5 @@
       return x;
   }
   ```
++ 自适应辛普森法
+  

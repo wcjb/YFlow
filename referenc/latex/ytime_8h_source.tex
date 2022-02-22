@@ -1,0 +1,31 @@
+\hypertarget{ytime_8h_source}{}\doxysection{ytime.\+h}
+\label{ytime_8h_source}\index{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/ytime.h@{C:/Users/wcjb/Documents/CodeSpace/YFlow/source/ytime.h}}
+\mbox{\hyperlink{ytime_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{class_timer}{Timer}}}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28 \textcolor{keyword}{private}:}
+\DoxyCodeLine{29     std::chrono::system\_clock::time\_point start; }
+\DoxyCodeLine{30     std::chrono::system\_clock::time\_point end;   }
+\DoxyCodeLine{32     std::chrono::duration<double> duration; }
+\DoxyCodeLine{33 \textcolor{keyword}{public}:}
+\DoxyCodeLine{37     \mbox{\hyperlink{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer}}()}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         start = std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{45     \mbox{\hyperlink{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}{\string~Timer}}() }
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47         end = std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{48         duration = end -\/ start;}
+\DoxyCodeLine{49         }
+\DoxyCodeLine{50         \textcolor{keywordtype}{double} ms = duration.count() * 1000.0f; }
+\DoxyCodeLine{51         printf(\textcolor{stringliteral}{"{}Timer took:\%f ms\(\backslash\)n"{}},ms);}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 \};}
+
+\end{DoxyCode}

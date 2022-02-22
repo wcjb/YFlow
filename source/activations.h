@@ -1,6 +1,3 @@
-#ifndef __ACTIVATIONS__
-#define __ACTIVATIONS__
-
 #pragma once
 
 #include "Tensor.h"
@@ -68,5 +65,3 @@ public:
 	}
 	
 };
-
-#endif // !__ACTIVATIONS__

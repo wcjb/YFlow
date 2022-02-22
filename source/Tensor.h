@@ -61,8 +61,6 @@
  * -# Strassen 算法，时间复杂度是O(n^2.807) = O(n^(log2(7)))
  * -# Coppersmith-Winograd算法，时间复杂度是O（n^2.38) 
  **/
-#ifndef __TENSOR__
-#define __TENSOR__
 #pragma once
 #include <iostream>
 #include <random>
@@ -152,4 +150,3 @@ public:
         }
     }
 };
-#endif

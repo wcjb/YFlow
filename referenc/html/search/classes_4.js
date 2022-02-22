@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tensor_16',['Tensor',['../class_tensor.html',1,'']]],
-  ['tensor_3c_20int_20_3e_17',['Tensor&lt; int &gt;',['../class_tensor.html',1,'']]]
+  ['stbi_5fio_5fcallbacks_0',['stbi_io_callbacks',['../structstbi__io__callbacks.html',1,'']]]
 ];

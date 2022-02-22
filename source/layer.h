@@ -1,6 +1,4 @@
-#ifndef __LAYER__
-#define __LAYER__
-
+#pragma once
 #include "Tensor.h"
 #include "activations.h"
 

@@ -14,9 +14,6 @@
  * </table>
  * *********************************************************************************
  */
-#ifndef __PARSER_MNIST__
-#define __PARSER_MNIST__
-
 #pragma once
 /*
  *读取mnist数据集的图像和标签
@@ -143,4 +140,3 @@ void read(const string &img_path,const string &label_path )
     delete[] image;
 
 }
-#endif

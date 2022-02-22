@@ -14,9 +14,6 @@
  * </table>
  * *********************************************************************************
  */
-#ifndef __TOOLS__
-#define __TOOLS__
-
 #pragma once
 
 /**
@@ -25,6 +22,17 @@
  */
 int sys(void);
 
+/**
+ * @brief 绝对值函数实现
+ * @tparam T 
+ * @param  x                desc
+ * @return T @c 
+ */
+template<class T> 
+inline static T abs(T x)
+{
+    return x>0 ? x:(-x);
+} 
 /**
  * @brief 基于牛顿迭代的快速平方根倒数算法(x(n+1) = x(n)-f(x(n))/f'(x(n)))
  * @param x 需要进行平方倒数运算的数
@@ -123,7 +131,7 @@ double log(double x,int n);
  * @param  x                desc
  * @return float @c 
  */
-float sqrt(float x);
+float _sqrt(float x);
 
 /**
  * @brief 变量值交换
@@ -152,5 +160,3 @@ void selection_sort(int list [], int n);
  * @param  n                desc
  */
 void bubble_sort(int list[], int n);
-
-#endif 
