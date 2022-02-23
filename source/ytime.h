@@ -26,8 +26,8 @@
 class Timer
 {
 private:
-    std::chrono::system_clock::time_point start; /**<起始时间 */
-    std::chrono::system_clock::time_point end;   /**<截至时间 */
+    std::chrono::steady_clock::time_point start; /**<起始时间 */
+    std::chrono::steady_clock::time_point end;   /**<截至时间 */
    
     std::chrono::duration<double> duration; 
 public:
@@ -36,7 +36,7 @@ public:
     */
     Timer()
     {
-        start = std::chrono::high_resolution_clock::now();
+        start = std::chrono::steady_clock::now();
     }
     /**
      * @brief 调用析构函数时，获取当前时间，并计算对象从被构造到析构所经过时间（毫秒）
@@ -44,7 +44,7 @@ public:
      */
     ~Timer() 
     {
-        end = std::chrono::high_resolution_clock::now();
+        end = std::chrono::steady_clock::now();
         duration = end - start;
         
         double ms = duration.count() * 1000.0f; 
