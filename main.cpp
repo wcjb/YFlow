@@ -34,7 +34,9 @@
 using namespace std;
 #include "source/tools.h"
 #include "source/ytime.h"
+#include "source/ylog.h"
 #include <cmath>
+#include<iomanip>
 
 int main(int argc, char** argv)
 {
@@ -63,11 +65,13 @@ int main(int argc, char** argv)
     // {
     //         cout << "int" << endl;
     // }
-	for( int i = 100;i< 200;i+=5 ) 
+	Timer timer;
+	double coeff[1000];
+	for (int i = 0;i< 1000;i++)
 	{
-		float a = __ieee754_log(i);
-		float b = log(i);
-		cout << a << " " << b << endl;	
-	}
+		coeff[i] = i+1;
+	} 
+	double y = Polynomial(2,coeff,1000);
+	std::cout << setprecision(20) << y << std::endl;
 	return 0;
 }
