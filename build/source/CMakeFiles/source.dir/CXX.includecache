@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/weichijunbo/Documents/YFlow/source/tools.h
+
+/Users/weichijunbo/Documents/YFlow/source/ylog.cpp
+ylog.h
+/Users/weichijunbo/Documents/YFlow/source/ylog.h
+
+/Users/weichijunbo/Documents/YFlow/source/ylog.h
+tools.h
+/Users/weichijunbo/Documents/YFlow/source/tools.h
+

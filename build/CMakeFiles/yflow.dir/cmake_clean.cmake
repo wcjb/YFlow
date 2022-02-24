@@ -1,9 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/yflow.dir/main.cpp.obj"
-  "CMakeFiles/yflow.dir/main.cpp.obj.d"
-  "libyflow.dll.a"
-  "yflow.exe"
-  "yflow.exe.manifest"
+  "CMakeFiles/yflow.dir/main.cpp.o"
+  "yflow"
   "yflow.pdb"
 )
 

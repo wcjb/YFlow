@@ -1,2 +1,2 @@
-C:\mingw64\bin\ar.exe qc libsource.a CMakeFiles/source.dir/Random.cpp.obj CMakeFiles/source.dir/tools.cpp.obj
-C:\mingw64\bin\ranlib.exe libsource.a
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libsource.a  CMakeFiles/source.dir/Random.cpp.o CMakeFiles/source.dir/tools.cpp.o CMakeFiles/source.dir/ylog.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libsource.a

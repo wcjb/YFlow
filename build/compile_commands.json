@@ -1,0 +1,25 @@
+[
+{
+  "directory": "/Users/weichijunbo/Documents/YFlow/build",
+  "command": "/usr/local/bin/g++-9     -g -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -o CMakeFiles/yflow.dir/main.cpp.o -c /Users/weichijunbo/Documents/YFlow/main.cpp",
+  "file": "/Users/weichijunbo/Documents/YFlow/main.cpp"
+},
+
+{
+  "directory": "/Users/weichijunbo/Documents/YFlow/build",
+  "command": "/usr/local/bin/g++-9    -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -o source/CMakeFiles/source.dir/Random.cpp.o -c /Users/weichijunbo/Documents/YFlow/source/Random.cpp",
+  "file": "/Users/weichijunbo/Documents/YFlow/source/Random.cpp"
+},
+
+{
+  "directory": "/Users/weichijunbo/Documents/YFlow/build",
+  "command": "/usr/local/bin/g++-9    -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -o source/CMakeFiles/source.dir/tools.cpp.o -c /Users/weichijunbo/Documents/YFlow/source/tools.cpp",
+  "file": "/Users/weichijunbo/Documents/YFlow/source/tools.cpp"
+},
+
+{
+  "directory": "/Users/weichijunbo/Documents/YFlow/build",
+  "command": "/usr/local/bin/g++-9    -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -o source/CMakeFiles/source.dir/ylog.cpp.o -c /Users/weichijunbo/Documents/YFlow/source/ylog.cpp",
+  "file": "/Users/weichijunbo/Documents/YFlow/source/ylog.cpp"
+}
+]

@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/source.dir/Random.cpp.obj"
-  "CMakeFiles/source.dir/Random.cpp.obj.d"
-  "CMakeFiles/source.dir/tools.cpp.obj"
-  "CMakeFiles/source.dir/tools.cpp.obj.d"
+  "CMakeFiles/source.dir/Random.cpp.o"
+  "CMakeFiles/source.dir/tools.cpp.o"
+  "CMakeFiles/source.dir/ylog.cpp.o"
   "libsource.a"
   "libsource.pdb"
 )

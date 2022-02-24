@@ -78,4 +78,16 @@
   }
   ```
 + 自适应辛普森法
-  
++ 多项式的矩阵乘法
+$$f(x)=\sum_{k=0}^n a_k x^k,g(x)=\sum_{k=0}^m b_k x^k,f(x)g(x)=\sum_{k=0}^{n+m} c_k x^k
+
+
+\begin{pmatrix} c_0 & c_1 & \cdots & c_{n+m}\end{pmatrix}
+=
+\begin{pmatrix} a_0 & a_1 & \cdots & a_n\end{pmatrix}
+\begin{pmatrix}
+b_0 & b_1 & \cdots & b_m & 0 & \cdots & 0\\
+0 & b_0 & \cdots & b_{m-1} & b_m & \cdots & 0\\
+\cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots
+\end{pmatrix}
+$$
