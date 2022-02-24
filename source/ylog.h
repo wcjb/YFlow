@@ -1,5 +1,29 @@
 #pragma once
 #include "tools.h"
+
+/**
+ * @brief 多项式求值，逐项求和算法，即按多项式的次数由低到高进行求值。
+ * @param x 值
+ * @param coefficient double类型指针，存储多项式的系数，按次数由低到高进行存储。
+ * @param max_exponential 多项式的次数，即多项式的最高次数
+ * @note float精度是2^23，能保证6位。double精度是2^52，能保证15位。但是默认float和
+ * double都只能显示6位，再多需要#include <iomanip>，然后在输出语句之前插入cout << 
+ * setprecision(20);强制输出小数位。
+ * @return 返回多项式在x处的值
+ */
+double Polynomial(double x,double* coefficient,int max_exponential)
+{
+    double power = 1.0;
+    double poly = coefficient[0];
+    if (x == 0 || max_exponential==0) return coefficient[0];
+    for(int i = 1;i < max_exponential;i++)
+    {
+        power *= x;
+        poly += coefficient[i] * power;
+
+    }
+    return poly;
+}
 /**
  * @brief 基于泰勒级数和Remez算法的ln函数计算实现
  * @param  x  要取自然对数的值
