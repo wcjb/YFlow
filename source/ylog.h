@@ -1,8 +1,21 @@
+/**
+ * @file ylog.h
+ * @author 殉道者  wcjbyjx@gmail.com
+ * @version 0.0.1
+ * @date 2022-02-22 11:50
+ * @copyright Copyright © 2014-2022 weichijunbo.
+ * @brief 对数函数各类计算方法实现
+ * @par ChangeLog:
+ * <table>
+ * <tr><th>Date       <th>Version <th>Author  <th>Description
+ * <tr><td>2022-02-22 <td>0.0.1     <td>殉道者     <td>内容
+ * </table>
+ * */
 #pragma once
 #include "tools.h"
 
 /**
- * @brief 多项式求值，逐项求和算法，即按多项式的次数由低到高进行求值。
+ * @brief 多项式求值，朴素算法，即单独计算每一项的值再求和得到多项式的值,算法的时间复杂度为O(n^2)
  * @param x 值
  * @param coefficient double类型指针，存储多项式的系数，按次数由低到高进行存储。
  * @param max_exponential 多项式的次数，即多项式的最高次数
@@ -11,19 +24,20 @@
  * setprecision(20);强制输出小数位。
  * @return 返回多项式在x处的值
  */
-double Polynomial(double x,double* coefficient,int max_exponential)
-{
-    double power = 1.0;
-    double poly = coefficient[0];
-    if (x == 0 || max_exponential==0) return coefficient[0];
-    for(int i = 1;i < max_exponential;i++)
-    {
-        power *= x;
-        poly += coefficient[i] * power;
+double naive_polynpmial(double x,double* coefficient,int max_exponential);
 
-    }
-    return poly;
-}
+/**
+ * @brief 多项式求值，逐项求和算法，即按多项式的次数由低到高进行求值,算法的时间复杂度为O(2n)
+ * @param x 值
+ * @param coefficient double类型指针，存储多项式的系数，按次数由低到高进行存储。
+ * @param max_exponential 多项式的次数，即多项式的最高次数
+ * @note float精度是2^23，能保证6位。double精度是2^52，能保证15位。但是默认float和
+ * double都只能显示6位，再多需要#include <iomanip>，然后在输出语句之前插入cout << 
+ * setprecision(20);强制输出小数位。
+ * @return 返回多项式在x处的值
+ */
+double Polynomial(double x,double* coefficient,int max_exponential);
+
 /**
  * @brief 基于泰勒级数和Remez算法的ln函数计算实现
  * @param  x  要取自然对数的值

@@ -65,13 +65,24 @@ int main(int argc, char** argv)
     // {
     //         cout << "int" << endl;
     // }
-	Timer timer;
+	
 	double coeff[1000];
 	for (int i = 0;i< 1000;i++)
 	{
 		coeff[i] = i+1;
 	} 
-	double y = Polynomial(2,coeff,1000);
-	std::cout << setprecision(20) << y << std::endl;
+
+	{
+		Timer timer;
+		double y = Polynomial(2,coeff,1000);
+		std::cout << setprecision(20) << y << std::endl;
+	}
+	{
+		Timer timer1;
+		double y_1 = naive_polynpmial(2,coeff,1000);
+		std::cout << setprecision(20) << y_1 << std::endl;
+	}
+	
+	
 	return 0;
 }

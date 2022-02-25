@@ -1,5 +1,31 @@
 #include "ylog.h"
 
+double naive_polynpmial(double x,double* coefficient,int max_exponential) 
+{
+    double poly = coefficient[0];
+    if (x == 0 || max_exponential==0) return coefficient[0];
+    for (int i = 1;i < max_exponential;i++)
+    {
+        poly += coefficient[i] * binpow(x,i);
+    }
+
+    return poly;
+
+}
+
+double Polynomial(double x,double* coefficient,int max_exponential)
+{
+    double power = 1.0;
+    double poly = coefficient[0];
+    if (x == 0 || max_exponential==0) return coefficient[0];
+    for(int i = 1;i < max_exponential;i++)
+    {
+        power *= x;
+        poly += coefficient[i] * power;
+
+    }
+    return poly;
+}
 double __ieee754_log(double x)
 {
 	static const double	
