@@ -39,11 +39,6 @@ using namespace std;
 #include<iomanip>
 
 #include <cmath>
-#incldue <complex>
-typedef std::complex<double> Comp;
-const Comp I(0,1);
-const int MAX_N = 1 << 20;
-Comp tmp[MAX_N];
 int main(int argc, char** argv)
 {
 	// vector<int> layer_szie = {2,2,8,2};
@@ -91,24 +86,4 @@ int main(int argc, char** argv)
 	
 	
 	return 0;
-}
-// 快速傅里叶变换https://oi-wiki.org/math/poly/fft/
-void DFT(Comp* f,int n,int rec)
-{
-	if (n == 1) return;
-	for(int i = 0;i < n;++i) tmp[i] = f[i];
-	for(int i = 0:i < n;++i) 
-	{
-		if (i & 1) 
-		{
-			f[n / 2 + i / 2 ] = tmp[i];
-		}
-		else
-		{
-			f[i/2] = temp[i];
-		}
-	}
-	
-
-
 }
