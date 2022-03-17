@@ -14,9 +14,8 @@
 #pragma once
 #include <iostream>
 #include <random>
+#include <string.h>
 #include "Matrix.h"
-using namespace std;
-
 /* *
  * @class  <Tensor> [Tensor.h] [<Tensor>] 
  * &emsp;&emsp;实现张量数据结构，用于搭建神经网络，本质是多维矩阵。需要注意的是，当进行2维以上张量的运算时，两个张量之间的
@@ -79,82 +78,268 @@ template<typename T>
 class Tensor
 {
 private:
-    /**
-     * @brief 构建2维及以上维度张量的最小组成部分-矩阵,
-     */
-    struct matrix
-    {
-        int rows;   /*!<张量最低层矩阵的的行*/
-        int cols;   /*!<张量最底层矩阵的列*/
-        T **numpy;    /*!<二级指针存储矩阵元素*/
-    };
-    /**
-     * @brief 一维张量即矢量
-     */
-    struct vector
-    {
-        int number;  /*!<矢量的大小*/
-        T *numpy;    /*!<指针，存储矢量元素*/
-    };
-    /*!<零阶张量即常数*/
-    T constant;
-
+    int channel;
+    int width;
+    int height;
+    T* data;     // 由于涉及较多的看拷贝操作，使用共享指针的引用计数技术
 public:
-    int Dimension;       /*!<Tensor的维数*/
-    int *Shape;          /*!<Tensor的维度*/
-    string dtype;        /*!<Tensor的类型*/
+    Tensor(std::initializer_list<int> params);
+    Tensor (const int& _width,const int& _height,const int& _channel = 3);
+    Tensor(const unsigned char* const image_ptr,const int& _width,const int& _height);
     
-    /**
-     * @brief Construct a new Tensor object
-     * @param  demension        张量的维数0，1，2，3,最高支持三维张量
-     * @param  shape            张量的维度，传入参数必须为数组或指针对象
-     */
-    Tensor (const int demension,const int *shape) : Dimension(demension),Shape(shape)
+
+   
+    T at(const int& cols,const int& rows,const int& _channel = 3) const;
+    
+    
+    T max() const;
+    T min() const;
+    
+    int argmax() const;
+    int argmin() const;
+    
+    template<typename _T>
+    friend std::ostream &operator<<(std::ostream &strm,Tensor<_T> &tensor);
+    template<typename _T>
+    friend std::istream &operator>>(std::istream &strm,Tensor<_T> &tensor);
+
+    ~Tensor()
     {
-
-        matrix mat;
-        mat.rows = *(shape+demension-1);
-        mat.cols = *(shape+demension-2);
-
-        switch (demension)
-        {
-        ///三维张量
-        case 3 :
-            //三维张量第一维的值
-            int size = shape[0];   
-            //初始化matrix结构体的二级指针成员numpy，即分配内存空间
-            mat.numpy = new T* [size];
-            for (int j = 0;j < size;j++)
-            {
-                mat.numpy[j] = new T* [mat.rows * mat.cols];
-            }
-
-            if (size!=0 && mat.rows!=0 && mat.cols!=0)
-            {
-                #pragma omp parallel for
-                for (register int s = 0;s < size;s++)
-                {
-                    for (register int r = 0;r < mat.rows;r++)
-                    {
-                        for (register int c = 0;c < mat.cols;c++)
-                        {
-                            mat.numpy[s][c+r*c] = 1;
-                        }
-                    }
-                }
-            }
-            break;
-        ///二维张量即矩阵   
-        case 2 :
-            break;
-        
-        //一维张量即矢量
-        case 1 :
-            break;
-
-        //零维张量即标量
-        case 0 :
-            break;
-        }
+        delete[] data;
     }
 };
+
+template<typename T>
+Tensor<T>::Tensor (const int& _width,const int& _height,const int& _channel) : width(_width),height(_height),channel(_channel)
+{
+    int length = channel * width *  height;
+    data = new T[length];
+    // 按字节填充字符0，用于初始化tensor的元素
+    memset(data, 0,length * sizeof(T));
+}
+
+template <typename T>
+Tensor<T>::Tensor(std::initializer_list<int> params)
+{
+    std::initializer_list<int>::iterator index = params.begin();
+
+    width = *index;
+    height = *(index+1);
+
+    if ((index+2) == params.end())
+    {
+        channel = 3;
+    }
+    else
+    {
+         channel = *(index+2);
+    }
+    const int length = channel * width * height;
+    data = new T [length];
+    memset(data, 0, length * sizeof(T));
+}
+/**
+ * @brief 基于Opencv的Mat类型创建Tensor,需要注意的是，虽然二者底层都是线性存储，但是具体存储的方式
+ * 不同。
+ * Mat是按照如下方式存储：
+ * ==========================================================================================
+ * |                 Column 0         Column 1         Column ...           Column m         |
+ * | Row 0      b_00,g_00,r_00     b_01,g_01,r_01    ... , ... , ...      b_0m,g_0m,r_0m     |
+ * | Row 1      b_10,g_10,r_10     b_11,g_11,r_11    ... , ... , ...      b_1m,g_1m,r_1m     |
+ * | Row ...    ... , ... , ...    ... , ... , ...   ... , ... , ...      ... , ... , ...    |
+ * | Row n      b_n0,g_n0,r_n0     b_n1,g_n1,r_n1    ... , ... , ...      b_nm,g_nm,r_nm     |
+ * ===========================================================================================
+ * 然后依次将每一行首尾连接，即为Mat的线性存储方式。
+ *
+ * Tensor按照如下方式存储：
+ * ==========================================================================================
+ * |                 0       1       2      ...      column       ...       column * rows   | 
+ * | channel 0 (R)   r_0,   r_1,    r_2,    ...,    r_column,     ...,      r_column*rows   |
+ * | channel 1 (G)   g_0,   g_1,    g_2,    ...,    g_column,     ...,      g_column*rows   |
+ * | channel 2 (B)   b_0,   b_1,    b_2,    ...,    b_column,     ...,      b_column*rows   |
+ * ==========================================================================================
+ * 同上，依次将每一行首尾连接，即为Tensor的线性存储方式。
+ * @param image_ptr    Mat的data指针
+ * @param _width       Mat的column,即图像的宽
+ * @param _height      Mat的rows，即图像的高
+ * @return * template<typename T>  返回张量
+ */
+template<typename T>
+Tensor<T>::Tensor(const unsigned char* const image_ptr,const int& _width,const int& _height)
+{
+
+}
+
+
+/**
+ * @brief 根据给定的坐标访问图像中某个位置的元素值，坐标系等同于OPencv的坐标系,Tensor底层
+ * 为线性存储，从 0 到 width * height 个数是第 0 个通道的特征图内容，从width * height到
+ * 2 * width * height是第 1 个通道的特征图内容，以此类推。
+ * 
+ * @param cols 列，即图像的宽，x
+ * @param rows 行，即图像的高,y
+ * @param _channel 图像的通道数
+ * @return * T  （cols,rows）处的元素值
+ */
+template<typename T>
+T Tensor<T>::at(const int& cols,const int& rows,const int& _channel = 3) const
+{
+    int index = _channel * width * height + cols * width + rows;
+    return *(data+index);
+}  
+
+/**
+ * @brief 获取Tensor中最大的元素所在线性位置
+ * 
+ * @return * int 返回最大值所在线性位置
+ */
+template<typename T>
+int Tensor<T>::argmax() const
+{
+    if (data == nullptr) return 0;
+
+    const int lenght = channel * width * height;
+    T max_value = *data;
+    int max_index = 0;
+
+    for (int i = 1; i < lenght; i++)
+    {
+        if (max_value < *(data+i))
+        {
+            max_value = *(data+i);
+            max_index = i;
+        }
+    }
+    return max_index;
+}
+
+/**
+ * @brief 获取Tensor中最小的元素所在线性位置
+ * 
+ * @return * int 返回最大值所在线性位置
+ */
+template<typename T>
+int Tensor<T>::argmin() const
+{
+    if (data == nullptr) return 0;
+    const int lenght = channel * width * height;
+    T min_value = *data;
+    int min_index = 0;
+
+    for (int i = 1; i < lenght; i++)
+    {
+        if (min_value > *(data+i))
+        {
+            min_value = *(data+i);
+            min_index = i;
+        }
+    }
+    return min_index;
+}
+
+/**
+ * @brief 获取该Tensor中的最大值
+ * 
+ * @return * T 返回最大值
+ */
+template<typename T>
+T Tensor<T>::max() const
+{
+    if (data == nullptr) return 0;
+
+    const int lenght = channel * width * height;
+    T max_value = *data;
+
+    for (int i = 1; i < lenght; i++)
+    {
+        if (max_value < *(data+i))
+        {
+            max_value = *(data+i);
+        }
+    }
+    return max_value;
+}
+
+
+/**
+ * @brief 获取该Tensor的最小值
+ * 
+ * @return * int 返回最小值
+ */
+template<typename T>
+T Tensor<T>::min() const
+{
+    if (data == nullptr) return 0;
+
+    const int lenght = channel * width * height;
+    T min_value = *data;
+        
+    for (int i = 1; i < lenght; i++)
+    {
+        if (min_value > *(data+i))
+        {
+            min_value = *(data+i);
+        }
+    }
+    return min_value;
+} 
+
+
+template<typename _T>
+std::ostream &operator << (std::ostream &strm,Tensor<_T> &tensor)
+{
+    int len;
+    strm << "shape:<" << tensor.width << "," << tensor.height << "," << tensor.channel << ">" << std::endl;
+    strm<<"[";
+    for (int c = 0; c < tensor.channel;c++) 
+    {
+        strm<<"[";
+        // 高
+        for(int row = 0;row < tensor.height;++row)
+        {
+            strm<<"[";
+            // 宽
+            for(int col = 0;col < tensor.width;++col)
+            {
+                len  = c * tensor.width * tensor.height + tensor.width * row + col;
+                if(col == tensor.width - 1)
+                    strm << *(tensor.data + len );
+                else
+                    strm << *(tensor.data + len) <<" ";
+            }
+            if (len ==  tensor.channel * tensor.width * tensor.height-1)
+            {
+                strm<<"]";
+            }
+            else
+            {
+                if (row == tensor.height -1) 
+                {
+                    strm<<"]";
+                }
+                else
+                {
+                    strm<<"]," << std::endl;
+                }
+            }
+        }
+        if (c == tensor.channel-1)
+        {
+             strm<<"]";
+        }
+        else
+        {
+             strm<<"]"<<std::endl;
+        }
+    }
+    strm<<"]";
+    return strm;
+}
+
+template<typename _T>
+std::istream &operator >> (std::istream &strm,Tensor<_T>& tensor)
+{
+   const int lenght = tensor.channel * tensor.width * tensor.height;
+   for (int l = 0; l < lenght;l++)  strm >> *(tensor.data+l);
+   return strm;
+}

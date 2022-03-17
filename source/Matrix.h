@@ -12,9 +12,6 @@ private:
     T **num;
 
 public:
-    int dimension;  //张量的维数
-    int *shape;     //张量的维度
-    string dtype;   //张量的类型
     //std::type_info(int) 
     Matrix (const int _row ,const int _col)
     {
@@ -279,7 +276,7 @@ std::istream &operator>>(std::istream &strm,Matrix<_T> &B)
 {
     for(int i=0;i<B.row;++i)
         for(int j=0;j<B.col;++j)
-            strm>>B.num[i][j];
+            strm >> B.num[i][j];
     return strm;
 }
 

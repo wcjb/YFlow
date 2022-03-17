@@ -37,7 +37,7 @@ using namespace std;
 #include "source/ylog.h"
 #include <cmath>
 #include<iomanip>
-
+#include "source/Tensor.h" 
 #include <cmath>
 int main(int argc, char** argv)
 {
@@ -66,22 +66,11 @@ int main(int argc, char** argv)
     // {
     //         cout << "int" << endl;
     // }
-	
-	double coeff[1000];
-	for (int i = 0;i< 1000;i++)
 	{
-		coeff[i] = i+1;
-	} 
+		Timer time;
+		Tensor<float> tensor (3,3,3);
 
-	{
-		Timer timer;
-		double y = Polynomial(2,coeff,1000);
-		std::cout << setprecision(20) << y << std::endl;
-	}
-	{
-		Timer timer1;
-		double y_1 = naive_polynpmial(2,coeff,1000);
-		std::cout << setprecision(20) << y_1 << std::endl;
+		std::cout << tensor << std::endl;
 	}
 	
 	
