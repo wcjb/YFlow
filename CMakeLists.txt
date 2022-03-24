@@ -6,11 +6,12 @@ aux_source_directory(. DIR_SRCS)
 
 #添加source子目录
 add_subdirectory(source)
-#指定生成目标
-add_executable(yflow ${DIR_SRCS})
-# 添加链接库
-target_link_libraries(yflow source)
-
 # debug 模式
 set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g")
-# 生成可执行的文件
+
+
+#指定生成目标
+add_executable(yflow ${DIR_SRCS})
+
+# 添加链接库
+target_link_libraries(yflow source)

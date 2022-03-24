@@ -31,48 +31,32 @@
  * *********************************************************************************
  * */
 #include <iostream>
-using namespace std;
 #include "source/tools.h"
 #include "source/ytime.h"
 #include "source/ylog.h"
 #include <cmath>
 #include<iomanip>
 #include "source/Tensor.h" 
-#include <cmath>
-int main(int argc, char** argv)
+#include "source/multiplication.h"
+int main()
 {
-	// vector<int> layer_szie = {2,2,8,2};
-	// Matrix input(10,layer_szie[0]);
-	// Layer layer_01(layer_szie[0], layer_szie[1], "logistic");
-	// Layer layer_02(layer_szie[1], layer_szie[2], "relu");
-	// Layer layer_03(layer_szie[2], layer_szie[3], "relu");
-	// Matrix outputs_01 = layer_01.Forward(input);
-	// Matrix outputs_02 = layer_02.Forward(outputs_01);
-	// Matrix outputs_03 = layer_03.Forward(outputs_02);
-
-	// cout << "outputs:" << endl << outputs_01 << endl;
-	// cout << "outputs:" << endl << outputs_02 << endl;
-	// cout << "outputs:" << endl << outputs_03 << endl;
-	// string img_dir = "C:\\Users\\wcjb\\Documents\\CodeSpace\\YFlow\\data\\Mnist\\t10k-images-idx3-ubyte\\t10k-images.idx3-ubyte";
-	// string lab_dir = "C:\\Users\\wcjb\\Documents\\CodeSpace\\YFlow\\data\\Mnist\\t10k-labels-idx1-ubyte\\t10k-labels.idx1-ubyte";
-	// read(img_dir,lab_dir);
-	// return 0;
-
-	// int a[4] = {1,2,3,4};
-	// cout << sum(a) << endl;
-
-    ///C++中int类型和long类型范围相同-2147483648～2147483647(-2^31~2^31-1)
-    // if (typeid(a)==typeid(int))
-    // {
-    //         cout << "int" << endl;
-    // }
+	// {
+	// 	Timer t;
+	// 	std::string str = "C:/Users/wcjb/Documents/CodeSpace/YFlow/data/1.jpg";
+	// 	std::string out_str  =  "C:/Users/wcjb/Desktop/002.jpg";
+	// 	Tensor<unsigned char> tensor = imread<unsigned char>(str.c_str(),LINE_CONTINUOUS);
+	// 	auto tt = convert(tensor,LINE_RGB);
+	// 	imwrite(tt,out_str.c_str(),0);
+	// }
+	
+	Timer time;
+	auto a = matrix(240,240);
+	auto b = matrix(240,240);
+	for (int i = 0;i < 100;i++)
 	{
-		Timer time;
-		Tensor<float> tensor (3,3,3);
-
-		std::cout << tensor << std::endl;
+		auto c = a * b;
 	}
-	
-	
+	auto c = a * b;
+	std::cout << c << std::endl;
 	return 0;
 }

@@ -1,6 +1,0 @@
-# ninja log v5
-9	341	6671237061669549	source/CMakeFiles/source.dir/tools.cpp.obj	4137528e993eb88c
-1	375	6671237158881341	CMakeFiles/yflow.dir/main.cpp.obj	13b375527f2d78c4
-5	673	6671237064870352	source/CMakeFiles/source.dir/Random.cpp.obj	cacd48e4eebff374
-673	728	6671237065499780	source/source.lib	210a5c3313da81ab
-376	548	6671237160346825	yflow.exe	d381d76a565da57

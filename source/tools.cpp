@@ -41,7 +41,7 @@ double binpow(double a, long long b)
     double res = 1.0;
     while (b > 0) 
     {
-        if (b & 1) res = res * a; /**<将二进制位为 1 时对应的幂累乘到结果中*/
+        if (b & 1) res = res * a; /**<将二进制位为 1 时对应的幂累乘到结果中 */
         a = a * a;
         b >>= 1;
     }
@@ -50,15 +50,15 @@ double binpow(double a, long long b)
 
 int IsBigEndian()
 {
-	short int a = 0x1122;//十六进制，一个数值占4位
-	char b =  *(char *)&a;  //通过将short(2字节)强制类型转换成char单字节，b指向a的起始字节（低字节）
-	if( b == 0x11)//低字节存的是数据的高字节数据
+	short int a = 0x1122;// 十六进制，一个数值占4位
+	char b =  *(char *)&a;  // 通过将short(2字节)强制类型转换成char单字节，b指向a的起始字节（低字节）
+	if( b == 0x11)// 低字节存的是数据的高字节数据
 	{
-		return 1; //大端
+		return 1; // 大端
 	}
 	else
 	{
-		return 0; //小端
+		return 0; // 小端
 	}
 }
 
@@ -89,15 +89,16 @@ void selection_sort(int list [], int n)
     }
 }
 
+
 void bubble_sort(int list[], int n)
 {
-    for (int i = 0;i < n;i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0;j < n-(i+1);j++)
+        for (int j = 0; j < n - (i + 1); j++)
         {
-            if (list[j] > list[j+1])
+            if (list[j] > list[j + 1])
             {
-                swap(&list[j],&list[j+1]);
+                swap(&list[j], &list[j + 1]);
             }
         }
     }
